@@ -14,6 +14,12 @@
 <% end %>
 
 
-<p>Cities: <% @results.each do |result| %></p>
-	<%= result.name %>, <%= result.region.name %>, <%= result.country.name %> <hr>
+<% if !@results.blank? %>
+
+	<p>Results:</p> 
+
+	<% @results.each do |result| %>
+		<%= result.name %>, <%= result.region.name %>, <%= result.country.name %> <hr>
+	<% end %>
+
 <% end %>
