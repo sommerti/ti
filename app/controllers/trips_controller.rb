@@ -3,10 +3,9 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
   before_action :format_params, only: [:create, :update]
 
-
   def index
-    @trips = Trip.where(is_private: false).order("CREATED_AT DESC")
-    # @trips = Trip.order("CREATED_AT DESC")
+    @public_trips = Trip.is_public
+    @private_trips = Trip.is_private
   end
 
   def show

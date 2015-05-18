@@ -19,7 +19,6 @@ gem 'simple_form', '~> 3.1.0'
 
 
 
-
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

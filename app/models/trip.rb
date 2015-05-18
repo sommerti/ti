@@ -15,11 +15,18 @@
 #
 
 class Trip < ActiveRecord::Base
+  	belongs_to :user
+
+  	validates :name, presence: true
+
+	scope :is_private, -> { where(is_private: true) }
+	scope :is_public, -> { where(is_private: false) }
+	scope :by_user_id, -> user_id { where(user_id: user_id) }
+	scope :by_travel_date, -> begin_date, end_date { where("begin_date = ? AND end_date = ?", begin_date, end_date) }
+
+  	# gem friendly_id
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
-
-	# Try building a slug based on the following fields in
-	# increasing order of specificity.
 	def slug_candidates
 	[
 	  :name,
@@ -29,9 +36,5 @@ class Trip < ActiveRecord::Base
 	end
 
 
-
-  	belongs_to :user
-
-  	validates :name, presence: true
 
 end

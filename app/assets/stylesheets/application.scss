@@ -14,3 +14,23 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body{
+	//font-family: 'Droid Serif', serif;
+	font-family: 'Noto Serif', serif;
+	//font-family: 'PT Sans', sans-serif;
+	//font-family: 'PT Serif', serif;
+	background-color: #F5F5F5;
+}
+
+h1, h2, h3, h4{
+	font-weight: 700;
+	color: #333;
+}
+h1{
+	margin-bottom: 20px;
+}
+p{
+	font-size: 1.5em;
+	letter-spacing: -0.5px;
+}
