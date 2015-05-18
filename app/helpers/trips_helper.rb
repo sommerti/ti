@@ -1,9 +1,10 @@
 module TripsHelper
-	def display_one_or_more_trips(trip_or_trips)
-		if trip_or_trips.blank?
-			("<p>No trip to display.</p>").html_safe
+	def show_trips(trips)
+		if trips.blank?
+			flash["notice"] = 'No trip to show.'
+			''
 		else
-			render trip_or_trips
+			render trips
 		end
 	end
 end

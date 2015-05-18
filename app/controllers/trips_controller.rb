@@ -43,7 +43,7 @@ class TripsController < ApplicationController
   def destroy
     @trip.destroy
     flash[:notice] = "Trip deleted."
-    redirect_to trip_path
+    redirect_to trips_path
   end
 
 

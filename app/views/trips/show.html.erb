@@ -1,2 +1,8 @@
 <h1>Trip Details</h1>
-<%= display_one_or_more_trips(@trip) %>
+<p>Trip name: <%= @trip.name %></p>
+<p>Start date: <%= @trip.begin_date %></p>
+<p>End date: <%= @trip.end_date %></p>
+<p>Create by: <%= @trip.user.email %></p>
+<p><%= link_to 'Edit', edit_trip_path %></p>
+<p><%= link_to 'Delete', trip_path, method: :delete, data: {confirm: 'Are you sure?'} %></p>
+<p><%= link_to 'All Trips', trips_path %></p>
