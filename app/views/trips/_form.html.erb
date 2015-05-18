@@ -1,0 +1,8 @@
+<%= simple_form_for @trip do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :begin_date %>
+  <%= f.input :begin_date %>
+  <%= f.input :is_private, as: :boolean, checked_value: true, unchecked_value: false, label: 'Private?', input_html: { checked: false } %>
+  <%= f.button :submit %>
+<% end %>

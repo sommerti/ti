@@ -8,8 +8,10 @@
 #  end_date    :date
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  privacy     :string
 #  description :text
+#  slug        :string
+#  user_id     :integer
+#  is_private  :boolean
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
