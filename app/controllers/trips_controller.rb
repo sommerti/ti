@@ -9,7 +9,12 @@ class TripsController < ApplicationController
   end
 
   def show
-      @city_results = City.text_search(params[:search][:city]) if !params[:search][:city].blank?
+      if !params[:search].nil?
+        @destination = params[:search][:destination]
+        @country_results = Country.text_search(@destination) 
+        @region_results = Region.text_search(@destination) 
+        @city_results = City.text_search(@destination) 
+      end
   end
 
   def new

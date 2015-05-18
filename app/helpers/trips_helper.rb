@@ -1,3 +1,5 @@
 module TripsHelper
 
+
+
 end
