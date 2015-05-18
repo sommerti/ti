@@ -9,9 +9,7 @@ class TripsController < ApplicationController
   end
 
   def show
-    if params[:search]
-      @results = City.text_search(params[:search][:query]) if params[:search][:query].present?
-    end
+      @city_results = City.text_search(params[:search][:city]) if !params[:search][:city].blank?
   end
 
   def new

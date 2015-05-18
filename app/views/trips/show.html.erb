@@ -9,17 +9,13 @@
 
 
 <%= simple_form_for :search, url: trip_path, method: :get do |f| %>
-	<%= f.input :query, autofocus: true, label: 'Your next stop'%>
+	<%= f.input :city, label: 'Your next city'%>
 	<%= f.submit 'Search' %>
 <% end %>
 
-
-<% if !@results.blank? %>
-
-	<p>Results:</p> 
-
-	<% @results.each do |result| %>
+<% if !@city_results.blank? %>
+	<p>City results:</p> 
+	<% @city_results.each do |result| %>
 		<%= result.name %>, <%= result.region.name %>, <%= result.country.name %> <hr>
 	<% end %>
-
 <% end %>

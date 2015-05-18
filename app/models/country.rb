@@ -25,5 +25,9 @@ class Country < ActiveRecord::Base
 	has_many :cities
 
 	include PgSearch
-	multisearchable against: :name
+	pg_search_scope :search, against: :name
+
+	def self.text_search(query)
+		search(query)
+	end
 end
