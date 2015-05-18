@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :search]
   before_action :format_params, only: [:create, :update]
 
   def index
@@ -9,7 +9,9 @@ class TripsController < ApplicationController
   end
 
   def show
-
+    if params[:search]
+      @results = City.text_search(params[:search][:query]) if params[:search][:query].present?
+    end
   end
 
   def new
@@ -45,7 +47,6 @@ class TripsController < ApplicationController
     flash[:notice] = "Trip deleted."
     redirect_to trips_path
   end
-
 
   private
   def trip_params

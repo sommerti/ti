@@ -6,3 +6,14 @@
 <p><%= link_to 'Edit', edit_trip_path %></p>
 <p><%= link_to 'Delete', trip_path, method: :delete, data: {confirm: 'Are you sure?'} %></p>
 <p><%= link_to 'All Trips', trips_path %></p>
+
+
+<%= simple_form_for :search, url: trip_path, method: :get do |f| %>
+	<%= f.input :query, autofocus: true, label: 'Your next stop'%>
+	<%= f.submit 'Search' %>
+<% end %>
+
+
+<p>Cities: <% @results.each do |result| %></p>
+	<%= result.name %>, <%= result.region.name %>, <%= result.country.name %> <hr>
+<% end %>
