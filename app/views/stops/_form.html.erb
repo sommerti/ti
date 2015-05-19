@@ -1,0 +1,11 @@
+<%= simple_form_for [@trip, @stop] do |f| %>
+	Country: <%= @stop.country.name %><br>
+	Region: <%= @stop.region.name %><br>
+	City: <%= @stop.city.name %><br>
+	<%= f.input :country_id, as: :hidden %>
+	<%= f.input :region_id, as: :hidden  %>
+	<%= f.input :city_id, as: :hidden  %>
+	<%= f.input :begin_date %>
+	<%= f.input :end_date %>
+	<%= f.button :submit %>
+<% end %>

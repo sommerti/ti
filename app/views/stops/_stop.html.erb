@@ -1,0 +1,29 @@
+<% if !stop.country.blank? %>
+	<p>Country: <%= stop.country.name %></p>
+<% else %>
+	<p>No country.</p>
+<% end %>
+
+<% if !stop.region.blank? %>
+	<p>Region: <%= stop.region.name %></p>
+<% else %>
+	<p>No region.</p>
+<% end %>
+
+<% if !stop.city.blank? %>
+	<p>City: <%= stop.city.name %></p>
+<% else %>
+	<p>No city.</p>
+<% end %>
+
+<% if !stop.begin_date.blank? %>
+	<p>Begin date: <%= stop.begin_date %></p>
+<% else %>
+	<p>No begin date.</p>
+<% end %>
+
+<% if !stop.end_date.blank? %>
+	<p>City: <%= stop.end_date %></p>
+<% else %>
+	<p>No end date.</p>
+<% end %>

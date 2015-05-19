@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518082836) do
+ActiveRecord::Schema.define(version: 20150519004719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,21 @@ ActiveRecord::Schema.define(version: 20150518082836) do
 
   add_index "regions", ["name"], name: "index_regions_on_name", using: :btree
 
+  create_table "stops", force: :cascade do |t|
+    t.integer  "country_id"
+    t.integer  "region_id"
+    t.integer  "city_id"
+    t.date     "begin_date"
+    t.date     "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "trip_id"
+  end
+
+  add_index "stops", ["city_id"], name: "index_stops_on_city_id", using: :btree
+  add_index "stops", ["country_id"], name: "index_stops_on_country_id", using: :btree
+  add_index "stops", ["region_id"], name: "index_stops_on_region_id", using: :btree
+
   create_table "trips", force: :cascade do |t|
     t.string   "name"
     t.date     "begin_date"
@@ -93,4 +108,7 @@ ActiveRecord::Schema.define(version: 20150518082836) do
   add_foreign_key "cities", "countries"
   add_foreign_key "cities", "regions"
   add_foreign_key "regions", "countries"
+  add_foreign_key "stops", "cities"
+  add_foreign_key "stops", "countries"
+  add_foreign_key "stops", "regions"
 end

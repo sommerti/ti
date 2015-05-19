@@ -2,5 +2,8 @@
 <%= city_result.name %>, 
 <%= city_result.region.name %>, 
 <%= city_result.country.name %> 
-<!-- LINK TO ADD A STOP -->
+<%= link_to 'Add To Trip', new_trip_stop_path(@trip, 
+												country_id: city_result.country.id,
+												region_id: city_result.region.id,
+												city_id: city_result.id) %>
 </p>

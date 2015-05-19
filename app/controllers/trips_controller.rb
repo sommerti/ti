@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy, :search]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy]
   before_action :format_params, only: [:create, :update]
 
   def index
@@ -41,7 +41,7 @@ class TripsController < ApplicationController
       flash[:notice] = "Trip updated."
       redirect_to @trip
     else
-      render 'new'
+      render 'edit'
     end
   end
 
@@ -52,12 +52,15 @@ class TripsController < ApplicationController
   end
 
   private
+  
   def trip_params
     params.require(:trip).permit(:name, :begin_date, :end_date, :is_private)
   end
+
   def set_trip    
     @trip = Trip.friendly.find(params[:id])
   end
+  
   def format_params
     @formatted_params = trip_params
     @formatted_params[:name].downcase!
