@@ -12,7 +12,9 @@
 	<p>Currently you have no stop on this trip.</p>
 <% else %>
 	<p>Currently you have <%= pluralize(@trip.stops.size, 'stop') %> on this trip.</p>
-	<%= render @trip.stops %>
+	<ul>
+		<%= render @trip.stops %>
+	</ul>	
 <% end %>
 
 <hr>
