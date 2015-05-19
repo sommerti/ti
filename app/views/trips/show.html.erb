@@ -1,5 +1,9 @@
 <h1>Trip Details</h1>
 
+<div style='width: 800px;'>
+  <div id="map_trip_stops" style='width: 800px; height: 400px;'></div>
+</div>
+
 <%= render partial: 'trip', locals: { trip: @trip}  %>
 
 
@@ -13,7 +17,7 @@
 <% else %>
 	<p>Currently you have <%= pluralize(@trip.stops.size, 'stop') %> on this trip.</p>
 	<ul>
-		<%= render @trip.stops %>
+		<%= render @trip.stops.order("begin_date ASC") %>
 	</ul>	
 <% end %>
 
@@ -31,3 +35,39 @@
 <% if params[:search] %>
 	<%= render 'search_results' %>
 <% end %>
+
+<div style='width: 800px;'>
+  <div id="map_city_results" style='width: 800px; height: 400px;'></div>
+</div>
+
+
+<script>
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map_trip_stops'}}, function(){
+  markers = handler.addMarkers(<%= @hash_trip_stops.to_json.html_safe %>);
+
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  
+  // to center on a marker
+  // handler.map.centerOn(markers[0]); 
+  // to set the map zoom
+  // handler.getMap().setZoom(4);
+});
+
+handler_city_results = Gmaps.build('Google');
+handler_city_results.buildMap({ provider: {}, internal: {id: 'map_city_results'}}, function(){
+  markers = handler_city_results.addMarkers(<%= @hash_city_results.to_json.html_safe %>);
+  
+	<% if @city_results.size == 1 %>
+		// to center on a marker
+		handler_city_results.map.centerOn(markers[0]); 
+		// to set the map zoom
+		handler_city_results.getMap().setZoom(4);
+	<% else %>
+  		handler_city_results.bounds.extendWith(markers);
+  		handler_city_results.fitMapToBounds();
+  	<% end %>
+});
+</script>
+

@@ -10,6 +10,8 @@
 #  end_date   :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  trip_id    :integer
+#  position   :integer
 #
 
 require 'test_helper'

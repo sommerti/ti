@@ -1,0 +1,7 @@
+<p>
+	<%= region_result.name %>, 
+	<%= region_result.country.name %>
+	<%= link_to 'Add To Trip', new_trip_stop_path(@trip, 
+												country_id: region_result.country.id,
+												region_id: region_result.id) %>
+</p>

@@ -9,11 +9,32 @@ class TripsController < ApplicationController
   end
 
   def show
+      # user searches for a destination, result could be country/region/city
       if !params[:search].nil?
         @destination = params[:search][:destination]
         @country_results = Country.text_search(@destination) 
         @region_results = Region.text_search(@destination) 
         @city_results = City.text_search(@destination) 
+      end
+
+      # add trip's stops onto a google map; only city has latitude/longitude data
+      @hash_city_results = Gmaps4rails.build_markers(@city_results) do |city, marker|
+        marker.lat city.latitude
+        marker.lng city.longitude
+        marker.infowindow  "<div style='width:200px;height:100%;'>
+                              #{city.name} 
+                              <a href='#{@trip.id}/?country_id=#{city.country.id}
+                                                    region_id=#{city.region.id}
+                                                    city_id=#{city.id}
+                              '>Add To Trip</a></div>"
+      end
+
+
+      # add trip's stops onto a google map; only city has latitude/longitude data
+      @hash_trip_stops = Gmaps4rails.build_markers(@trip.stops) do |stop, marker|
+        marker.lat stop.city.latitude
+        marker.lng stop.city.longitude
+        marker.infowindow "<div style='width:200px;height:100%;'>#{stop.city.name}</div>"
       end
   end
 
