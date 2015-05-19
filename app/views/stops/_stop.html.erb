@@ -28,5 +28,5 @@
 	<p>No end date.</p>
 <% end %>
 
-<%= link_to 'Edit', edit_trip_stop_path(stop.trip, stop) %> | 
-<%= link_to 'Delete', trip_stop_path(stop.trip, stop), method: :delete, data: { confirm: 'Are you sure?'} %>
+<%= link_to 'Edit Date', edit_trip_stop_path(stop.trip, stop) %> | 
+<%= link_to 'Remove From Trip', trip_stop_path(stop.trip, stop), method: :delete, data: { confirm: 'Are you sure?'} %>

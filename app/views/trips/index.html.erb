@@ -1,5 +1,6 @@
-<h1>All Trips</h1>
+<h1>For Admin: View All Trips</h1>
 
+<!-- show all public trips -->
 <% if @public_trips.blank? %>
 	<p>No public trip.</p>
 <% else %>
@@ -9,6 +10,7 @@
 
 <hr>
 
+<!-- show all private trips -->
 <% if @private_trips.blank? %>
 	<p>No private trip.</p>
 <% else %>

@@ -1,26 +1,23 @@
 <h1>Trip Details</h1>
-<p>Trip name: <%= @trip.name %></p>
-<p>Start date: <%= @trip.begin_date %></p>
-<p>End date: <%= @trip.end_date %></p>
-<p>Create by: <%= @trip.user.email %></p>
-<p>
-	<%= link_to 'Edit', edit_trip_path %> |
-	<%= link_to 'Delete', trip_path, method: :delete, data: {confirm: 'Are you sure?'} %></p>
-</p>
+
+<%= render partial: 'trip', locals: { trip: @trip}  %>
+
 
 <p> <%= link_to '<< Back To All Trips', trips_path %></p>
 
 <hr>
 
+<!-- show stops on a trip -->
 <% if @trip.stops.blank? %>
-	<p>The current trip does not have any stop.</p>
+	<p>Currently you have no stop on this trip.</p>
 <% else %>
-	<p>Current stops on your trips:</p>
+	<p>Currently you have <%= pluralize(@trip.stops.size, 'stop') %> on this trip.</p>
 	<%= render @trip.stops %>
 <% end %>
 
 <hr>
 
+<!-- user searches for a destination that could be a country, region or city -->
 <%= simple_form_for :search, url: trip_path, method: :get do |f| %>
 	<%= f.input :destination, label: 'Search for a destination to add to your trip:'%>
 	<%= f.submit 'Search' %>
@@ -28,6 +25,7 @@
 
 <hr>
 
+<!-- return search result -->
 <% if params[:search] %>
 	<%= render 'search_results' %>
 <% end %>

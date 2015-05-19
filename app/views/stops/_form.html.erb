@@ -5,7 +5,7 @@
 	<%= f.input :country_id, as: :hidden %>
 	<%= f.input :region_id, as: :hidden  %>
 	<%= f.input :city_id, as: :hidden  %>
-	<%= f.input :begin_date %>
-	<%= f.input :end_date %>
+	<%= f.input :begin_date, include_blank: true %>
+	<%= f.input :end_date, include_blank: true %>
 	<%= f.button :submit %>
 <% end %>

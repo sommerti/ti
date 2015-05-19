@@ -1,8 +1,23 @@
-<p>Trip name: <%= trip.name %></p>
+<h3>Trip name: <%= trip.name %></h3>
+
 <p>Created by: <%= trip.user.email %></p>
+
+<% if trip.begin_date.blank? %>
+	<p>No begin date.</p>
+<% else %>
+	<p>Begin date: <%= trip.begin_date %></p>
+<% end %>
+
+<% if trip.end_date.blank? %>
+	<p>No end date.</p>
+<% else %>
+	<p>End date: <%= trip.end_date %></p>
+<% end %>
+
 <p>	
 	<%= link_to 'Show', trip_path(trip) %> | 
 	<%= link_to 'Edit', edit_trip_path(trip) %> | 
 	<%= link_to 'Delete', trip_path(trip), method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
-<br>
+
+<hr>
