@@ -49,19 +49,25 @@ handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map_trip_stops'}}, function(){
   markers = handler.addMarkers(<%= @hash_trip_stops.to_json.html_safe %>);
 
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  
-  // to center on a marker
-  // handler.map.centerOn(markers[0]); 
-  // to set the map zoom
-  // handler.getMap().setZoom(4);
+	<% if @trip.stops.size == 1 %>
+		// to center on a marker
+		handler.map.centerOn(markers[0]); 
+		// to set the map zoom
+		handler.getMap().setZoom(4);
+	<% else %>
+		handler.bounds.extendWith(markers);
+		handler.fitMapToBounds();
+	<% end %> 
 
   polylines = handler.addPolylines(
     [
-	<%= @hash_trip_stops.to_json.html_safe %>    
+		<%= @hash_trip_stops.to_json.html_safe %>    
 	],
-    { strokeColor: '#FF0000'}
+    { 
+		strokeColor: "#b94a48",
+		strokeOpacity: 0.5	,
+		strokeWeight: 5,
+    }
   );
 
   handler.bounds.extendWith(polylines);
