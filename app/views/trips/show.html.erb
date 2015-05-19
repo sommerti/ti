@@ -42,6 +42,7 @@
 
 
 <script>
+
 <% if !@trip.stops.blank? %>
 
 handler = Gmaps.build('Google');
@@ -55,6 +56,16 @@ handler.buildMap({ provider: {}, internal: {id: 'map_trip_stops'}}, function(){
   // handler.map.centerOn(markers[0]); 
   // to set the map zoom
   // handler.getMap().setZoom(4);
+
+  polylines = handler.addPolylines(
+    [
+	<%= @hash_trip_stops.to_json.html_safe %>    
+	],
+    { strokeColor: '#FF0000'}
+  );
+
+  handler.bounds.extendWith(polylines);
+
 });
 
 <% end %>
@@ -73,6 +84,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map_trip_stops'}}, function(){
 	  		handler_city_results.bounds.extendWith(markers);
 	  		handler_city_results.fitMapToBounds();
 	  	<% end %>
+
 	});
 <% end %>
 

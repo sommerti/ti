@@ -29,13 +29,13 @@ class TripsController < ApplicationController
                               '>Add To Trip</a></div>"
       end
 
-
       # add trip's stops onto a google map; only city has latitude/longitude data
       @hash_trip_stops = Gmaps4rails.build_markers(@trip.stops) do |stop, marker|
         marker.lat stop.city.latitude
         marker.lng stop.city.longitude
         marker.infowindow "<div style='width:200px;height:100%;'>#{stop.city.name}</div>"
       end
+      
   end
 
   def new
