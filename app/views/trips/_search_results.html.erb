@@ -1,0 +1,24 @@
+<% if @country_results.blank? %>
+	<p>No country result.</p>
+<% else %>
+	<p>Your search returned <%= pluralize(@country_results.size, 'country') %>: </p>
+	<%= render partial: 'country_result', collection: @country_results, as: :country_result %>
+<% end %>
+
+<hr>
+
+<% if @region_results.blank? %>
+	<p>No region result.</p>
+<% else %>
+	<p>Your search returned <%= pluralize(@region_results.size, 'region') %>: </p>
+	<%= render partial: 'region_result', collection: @region_results, as: :region_result %>
+<% end %>
+
+<hr>
+
+<% if @city_results.blank? %>
+	<p>No city result.</p>
+<% else %>
+	<p>Your search returned <%= pluralize(@city_results.size, 'city') %>: </p>
+	<%= render partial: 'city_result', collection: @city_results, as: :city_result %>
+<% end %>

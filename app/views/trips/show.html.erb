@@ -3,40 +3,31 @@
 <p>Start date: <%= @trip.begin_date %></p>
 <p>End date: <%= @trip.end_date %></p>
 <p>Create by: <%= @trip.user.email %></p>
-<p><%= link_to 'Edit', edit_trip_path %></p>
-<p><%= link_to 'Delete', trip_path, method: :delete, data: {confirm: 'Are you sure?'} %></p>
-<p><%= link_to 'All Trips', trips_path %></p>
+<p>
+	<%= link_to 'Edit', edit_trip_path %> |
+	<%= link_to 'Delete', trip_path, method: :delete, data: {confirm: 'Are you sure?'} %></p>
+</p>
 
+<p> <%= link_to '<< Back To All Trips', trips_path %></p>
+
+<hr>
+
+<% if @trip.stops.blank? %>
+	<p>The current trip does not have any stop.</p>
+<% else %>
+	<p>Current stops on your trips:</p>
+	<%= render @trip.stops %>
+<% end %>
+
+<hr>
 
 <%= simple_form_for :search, url: trip_path, method: :get do |f| %>
-	<%= f.input :destination, label: 'Your next destination'%>
+	<%= f.input :destination, label: 'Search for a destination to add to your trip:'%>
 	<%= f.submit 'Search' %>
 <% end %>
 
-
-
-<% if @country_results.blank? %>
-	<p>No country result.</p>
-<% else %>
-	<p>Your search returned <%= pluralize(@country_results.size, 'country') %>: </p>
-	<%= render partial: 'country_result', collection: @country_results, as: :country_result %>
-<% end %>
-
 <hr>
 
-<% if @region_results.blank? %>
-	<p>No region result.</p>
-<% else %>
-	<p>Your search returned <%= pluralize(@region_results.size, 'region') %>: </p>
-	<%= render partial: 'region_result', collection: @region_results, as: :region_result %>
+<% if params[:search] %>
+	<%= render 'search_results' %>
 <% end %>
-
-<hr>
-
-<% if @city_results.blank? %>
-	<p>No city result.</p>
-<% else %>
-	<p>Your search returned <%= pluralize(@city_results.size, 'city') %>: </p>
-	<%= render partial: 'city_result', collection: @city_results, as: :city_result %>
-<% end %>
-

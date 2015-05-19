@@ -1,5 +1,19 @@
 <h1>All Trips</h1>
 
-<p>Public trips: <%= show_collection(@public_trips) %></p>
-<p>Private trips: <%= show_collection(@private_trips) %></p>
+<% if @public_trips.blank? %>
+	<p>No public trip.</p>
+<% else %>
+	<h2>Public Trips:</h2>
+	<%= render @public_trips %>
+<% end %>
+
+<hr>
+
+<% if @private_trips.blank? %>
+	<p>No private trip.</p>
+<% else %>
+	<h2>Private Trips:</h2>
+	<%= render @private_trips %>
+<% end %>
+
 <p><%= link_to 'New Trip', new_trip_path %></p>

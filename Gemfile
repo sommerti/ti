@@ -16,7 +16,6 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'bootstrap-sass', '~> 3.3.4.1'
 gem 'simple_form', '~> 3.1.0'
 gem 'pg_search', '~> 0.7.9'
-gem 'rack-mini-profiler', '~> 0.9.3'
 
 
 group :development, :test do
@@ -25,7 +24,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'better_errors', '~> 2.1.1'
-  
+  # gem 'rack-mini-profiler', '~> 0.9.3'
+
 
 end
 

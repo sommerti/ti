@@ -1,7 +1,7 @@
 <%= simple_form_for [@trip, @stop] do |f| %>
-	Country: <%= @stop.country.name %><br>
-	Region: <%= @stop.region.name %><br>
-	City: <%= @stop.city.name %><br>
+	Country: <%= @stop.country.name if !@stop.country_id.blank? %><br>
+	Region: <%= @stop.region.name if !@stop.region_id.blank? %><br>
+	City: <%= @stop.city.name if !@stop.city_id.blank? %><br>
 	<%= f.input :country_id, as: :hidden %>
 	<%= f.input :region_id, as: :hidden  %>
 	<%= f.input :city_id, as: :hidden  %>

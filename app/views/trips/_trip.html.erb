@@ -1,2 +1,8 @@
-<p>Trip name: <%= link_to trip.name, trip %></p>
+<p>Trip name: <%= trip.name %></p>
 <p>Created by: <%= trip.user.email %></p>
+<p>	
+	<%= link_to 'Show', trip_path(trip) %> | 
+	<%= link_to 'Edit', edit_trip_path(trip) %> | 
+	<%= link_to 'Delete', trip_path(trip), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+<br>

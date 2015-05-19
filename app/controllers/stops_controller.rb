@@ -1,14 +1,11 @@
 class StopsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trip, only: [:new, :show, :create, :edit, :update, :destroy]
-  before_action :set_stop, only: [:show, :edit, :update, :destroy]
+  before_action :set_trip, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_stop, only: [:edit, :update, :destroy]
   
   def new
     @stop = @trip.stops.new(stop_new_params)
     @country
-  end
-
-  def show
   end
 
   def create
@@ -20,7 +17,8 @@ class StopsController < ApplicationController
       flash[:alert] = "Stop creation failed."
     end
 
-    redirect_to trip_stop_path(@trip, @stop)
+    # redirect_to trip_stop_path(@trip, @stop)
+    redirect_to @trip
   end
 
   def edit
@@ -34,13 +32,13 @@ class StopsController < ApplicationController
       render 'edit'
     end
 
-    redirect_to trip_stop_path(@trip, @stop)
+    redirect_to @trip
 
   end
 
   def destroy
-    @trip.destroy
-    flash[:notice] = "Trip deleted."
+    @stop.destroy
+    flash[:notice] = "Stop deleted."
     redirect_to @trip
   end
 
