@@ -11,7 +11,7 @@ class TripsController < ApplicationController
   def show
       # user searches for a destination, result could be country/region/city
       if !params[:search].nil?
-        @destination = params[:search][:destination]
+        @destination = params[:search]
         @country_results = Country.text_search(@destination) 
         @region_results = Region.text_search(@destination) 
         @city_results = City.text_search(@destination) 
@@ -22,11 +22,9 @@ class TripsController < ApplicationController
         marker.lat city.latitude
         marker.lng city.longitude
         marker.infowindow  "<div style='width:200px;height:100%;'>
-                              #{city.name} 
-                              <a href='#{@trip.id}/?country_id=#{city.country.id}
-                                                    region_id=#{city.region.id}
-                                                    city_id=#{city.id}
-                              '>Add To Trip</a></div>"
+                              #{city.name}&nbsp;&nbsp;
+                              <a href='#{@trip.id}/stops/new?country_id=#{city.country.id}&region_id=#{city.region.id}&city_id=#{city.id}
+                              '><strong>Add To Trip</strong></a></div>"
       end
 
       # add trip's stops onto a google map; only city has latitude/longitude data
@@ -58,6 +56,7 @@ class TripsController < ApplicationController
   end
 
   def update
+    @trip.slug = nil
     if @trip.update(@formatted_params)
       flash[:notice] = "Trip updated."
       redirect_to @trip
@@ -79,7 +78,7 @@ class TripsController < ApplicationController
   private
   
   def trip_params
-    params.require(:trip).permit(:name, :begin_date, :end_date, :is_private)
+    params.require(:trip).permit(:name, :begin_date, :end_date, :is_private, :description)
   end
 
   def set_trip    

@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
  	has_many :trips, dependent: :destroy
 
  	def fullname
- 		"#{this.firstname} {#this.lastname}"
+ 		"#{self.firstname} #{self.lastname}"
  	end
 
   	# gem friendly_id

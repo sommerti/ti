@@ -1,24 +1,27 @@
-<% if @country_results.blank? %>
-	<p>No country result.</p>
+<% if @city_results.blank? %>
+	<h4>0 city</h4>
 <% else %>
-	<p>Your search returned <%= pluralize(@country_results.size, 'country') %>: </p>
-	<%= render partial: 'country_result', collection: @country_results, as: :country_result %>
+	<h4><%= pluralize(@city_results.size, 'city') %>: </h4>
+	<div id="map_city_results"></div>
+	<table class="table-city-results">
+		<%= render partial: 'city_result', collection: @city_results, as: :city_result %>
+	</table>
 <% end %>
 
 <hr>
 
 <% if @region_results.blank? %>
-	<p>No region result.</p>
+	<h4>0 region.</h4>
 <% else %>
-	<p>Your search returned <%= pluralize(@region_results.size, 'region') %>: </p>
+	<h4><%= pluralize(@region_results.size, 'region') %>: </h4>
 	<%= render partial: 'region_result', collection: @region_results, as: :region_result %>
 <% end %>
 
 <hr>
 
-<% if @city_results.blank? %>
-	<p>No city result.</p>
+<% if @country_results.blank? %>
+	<h4>0 country.</h4>
 <% else %>
-	<p>Your search returned <%= pluralize(@city_results.size, 'city') %>: </p>
-	<%= render partial: 'city_result', collection: @city_results, as: :city_result %>
+	<h4><%= pluralize(@country_results.size, 'country') %>: </h4>
+	<%= render partial: 'country_result', collection: @country_results, as: :country_result %>
 <% end %>

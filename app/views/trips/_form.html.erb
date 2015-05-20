@@ -1,8 +1,8 @@
 <%= simple_form_for @trip do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :begin_date, include_blank: true, as: :date_picker %>
-  <%= f.input :end_date, include_blank: true, as: :date_picker %>
+  <%= f.input :begin_date, include_blank: true, as: :date_picker, label: "Begin date (optional)" %>
+  <%= f.input :end_date, include_blank: true, as: :date_picker, label: "End date (optional)"  %>
   <%= f.input :is_private, as: :boolean, checked_value: true, unchecked_value: false, label: 'Make it private?', input_html: { checked: false } %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

@@ -77,8 +77,52 @@ p{
 		color: #468847;
 	}
 }
+.profile-table{
+	margin-left: 5px;
+
+	td{
+		padding: 5px 10px 5px 0;
+	}
+}
 
 
+// trip & stops
+.trip-info{
+	margin-left: -15px;
+}
+.trip-heading{
+	margin: 0 0 5px 0;
+}
+.single-trip-stop{
+	margin: 15px 0 25px 0;
+}
+#map_trip_stops{
+	border-radius: 5px;
+	width: 100%;
+	height: 300px;
+	margin-top: -20px;
+}
+#map_city_results{
+	border-radius: 5px;
+	width: 100%;
+	height: 350px;
+	margin-bottom: 20px;
+}
+.search-stop{
+	margin: -15px 0 -30px 0;
+}
+.search-results{
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+.margin-search-action{
+	margin-top: 5px;
+}
+.table-city-results{
+	td{
+		padding: 10px;
+	}	
+}
 
 
 
@@ -193,11 +237,11 @@ p{
 
 // modifying .container-fluid of top navigation
 .narrower-nav-top{
-	width: 95%;
+	width: 80%;
 }
 
 .container-navbar-bottom{
-	width: 95%;
+	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -207,6 +251,9 @@ p{
 .container-edit{
 	width: 50%;
 	margin-bottom: 50px;
+}
+.container-trip-stops{
+	margin-top: 20px;
 }
 
 
@@ -231,6 +278,9 @@ p{
 .panel-map{
 	margin: 0;
 	padding: 0;	
+}
+.panel-search{
+	padding: 20px;
 }
 
 
@@ -265,7 +315,7 @@ p{
 	}
 }
 // show toggle button menu below 800px
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
     .navbar-header {
         float: none;
     }
@@ -301,8 +351,6 @@ p{
   		display:block !important;
 	}
 }
-
-
 
 
 // avatar

@@ -1,49 +1,65 @@
-<h1>Trip Details</h1>
+<div class="row trip-heading">
+	<div class="col-md-7">
+		<div class="trip-info">
+			<h1><%= @trip.name %>&nbsp;<%= link_to 'Edit', edit_trip_path(@trip), class: "btn btn-warning btn-sm" %></h1>
 
-<%= render_shareable static_link: true %>
+			<h4>
+				<%= @trip.begin_date.blank? ? "N.A." : @trip.begin_date  %>
+				~ 
+				<%= @trip.end_date.blank? ? "N.A." : @trip.end_date  %>
+			</h4>
 
-<%= render partial: 'trip', locals: { trip: @trip}  %>
+			<p><%= @trip.description %></p>
+		</div>
+	</div>
+	<div class="col-md-5">		
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-7">
+		<!-- show stops on a trip -->
+		<div class="container-trip-stops">
+			<% if @trip.stops.blank? %>
+				<p>You haven't created any stop on this trip.</p>
+			<% else %>
+				<!-- google map showing all stops -->
+				<div id="map_trip_stops"></div>
 
-<p> <%= link_to '<< Back To All Trips', trips_path %></p>
+				<h3><%= pluralize(@trip.stops.size, 'stop') %> on this trip:</h3>
+				<ol>
+					<%= render @trip.stops.order("begin_date ASC") %>
+				</ol>
 
-<hr>
+			<% end %>
+		</div>
 
-<div style='width: 800px;'>
-  <div id="map_trip_stops" style='width: 800px; height: 400px;'></div>
+	</div><!--  /col -->
+
+
+	<div class="col-md-5">
+		<div class="panel panel-search">
+			<!-- user searches for a destination that could be a country, region or city -->
+			<div class="search-stop">
+				<h3>Add a stop to your trip</h3>
+	     		<%= form_tag trip_path, class: "form-inline", method: :get do %>
+	            	<%= text_field_tag :search, params[:search], class: "form-control margin-search-action" %>
+	                <%= submit_tag "Search", class: "btn btn-primary btn-sm margin-search-action" %>
+				<% end %>
+			</div>
+
+			<!-- return search result -->
+			<div class="search-results">
+				<% if params[:search] %>
+					<h4>Search results returned:</h4>
+					<%= render 'search_results' %>
+				<% end %>
+			</div>
+		</div>
+	</div><!--  /col -->
 </div>
 
-<hr>
 
-<!-- show stops on a trip -->
-<% if @trip.stops.blank? %>
-	<p>Currently you have no stop on this trip.</p>
-<% else %>
-	<p>Currently you have <%= pluralize(@trip.stops.size, 'stop') %> on this trip.</p>
-	<ul>
-		<%= render @trip.stops.order("begin_date ASC") %>
-	</ul>	
-<% end %>
-
-<hr>
-
-<!-- user searches for a destination that could be a country, region or city -->
-<%= simple_form_for :search, url: trip_path, method: :get do |f| %>
-	<%= f.input :destination, label: 'Search for a destination to add to your trip:'%>
-	<%= f.submit 'Search' %>
-<% end %>
-
-<hr>
-
-<!-- return search result -->
-<% if params[:search] %>
-	<%= render 'search_results' %>
-<% end %>
-
-<div style='width: 800px;'>
-  <div id="map_city_results" style='width: 800px; height: 400px;'></div>
-</div>
-
-
+<!-- google map script -->
 <script>
 
 <% if !@trip.stops.blank? %>

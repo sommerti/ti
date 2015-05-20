@@ -1,15 +1,16 @@
 <h3><%= link_to trip.name, trip_path(trip) %></h3>
 
-<p>current_user.email</p>
-
 <p>
 	<%= trip.begin_date.blank? ? "N.A." : trip.begin_date  %>
 	~ 
 	<%= trip.end_date.blank? ? "N.A." : trip.end_date  %>
 </p>
 
+<% if current_user.role == "admin" %>
+	<p><%= trip.user.fullname %></p>
+<% end %>
+
 <p>	
-	<%= link_to 'Details', trip_path(trip), class: "btn btn-primary btn-xs" %>
 	<%= link_to 'Edit', edit_trip_path(trip), class: "btn btn-warning btn-xs" %>
 	<%= link_to 'Delete', trip_path(trip), class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>

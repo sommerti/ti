@@ -1,2 +1,8 @@
-<h1>Create A New Stop</h1>
+<div class="container-edit">
+<h1>
+	<%= @stop.city.name if !@stop.city_id.blank? %>, 
+	<%= @stop.region.name if !@stop.region_id.blank? %>, 
+	<%= @stop.country.name if !@stop.country_id.blank? %>
+</h1>
 <%= render 'form' %>
+</div>

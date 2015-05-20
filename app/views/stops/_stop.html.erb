@@ -1,34 +1,22 @@
-<li>
-	<% if !stop.country.blank? %>
-		<p>Country: <%= stop.country.name %></p>
-	<% else %>
-		<p>No country.</p>
-	<% end %>
+<li class="single-trip-stop">
+	<p>
+		<strong>
+		<%= stop.city.blank? ? "" : "#{stop.city.name}, "%>
 
-	<% if !stop.region.blank? %>
-		<p>Region: <%= stop.region.name %></p>
-	<% else %>
-		<p>No region.</p>
-	<% end %>
+		<%= stop.region.blank? ? "" : "#{stop.region.name}, " %>
 
-	<% if !stop.city.blank? %>
-		<p>City: <%= stop.city.name %></p>
-	<% else %>
-		<p>No city.</p>
-	<% end %>
+		<%= stop.country.blank? ? "" : "#{stop.country.name}" %>
+		</strong>
+	</p>
 
-	<% if !stop.begin_date.blank? %>
-		<p>Begin date: <%= stop.begin_date %></p>
-	<% else %>
-		<p>No begin date.</p>
-	<% end %>
+	<p>
+		<%= stop.begin_date.blank? ? "N.A." : stop.begin_date %>
+		~
+		<%= stop.end_date.blank? ? "N.A." : stop.end_date %>
+	</p>
 
-	<% if !stop.end_date.blank? %>
-		<p>City: <%= stop.end_date %></p>
-	<% else %>
-		<p>No end date.</p>
-	<% end %>
-
-	<%= link_to 'Edit Date', edit_trip_stop_path(stop.trip, stop) %> | 
-	<%= link_to 'Remove From Trip', trip_stop_path(stop.trip, stop), method: :delete, data: { confirm: 'Are you sure?'} %>
+	<p>
+		<%= link_to 'Edit Dates', edit_trip_stop_path(stop.trip, stop), class: "btn btn-warning btn-xs" %>
+		<%= link_to 'Remove', trip_stop_path(stop.trip, stop), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger btn-xs" %>
+	</p>
 </li>
