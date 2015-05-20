@@ -18,7 +18,15 @@ gem 'simple_form', '~> 3.1.0'
 gem 'pg_search', '~> 0.7.9'
 gem 'gmaps4rails', '~> 2.1.2'
 gem 'underscore-rails', '~> 1.8.2'
-
+gem 'shareable', '~> 1.1.4'
+gem 'font-awesome-rails', '~> 4.3.0.0'
+gem 'omniauth-twitter', '~> 1.2.0'
+gem 'omniauth-facebook', '~> 2.0.1'
+gem 'auto_html', '~> 1.6.4'
+gem 'figaro', '~> 1.1.0'
+gem 'rails_12factor', group: :production
+gem 'seed-fu', '~> 2.3.5'
+gem 'faker', '~> 1.4.3'
 
 group :development, :test do
   gem 'byebug'

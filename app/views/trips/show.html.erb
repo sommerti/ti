@@ -1,13 +1,16 @@
 <h1>Trip Details</h1>
 
-<div style='width: 800px;'>
-  <div id="map_trip_stops" style='width: 800px; height: 400px;'></div>
-</div>
+<%= render_shareable static_link: true %>
 
 <%= render partial: 'trip', locals: { trip: @trip}  %>
 
-
 <p> <%= link_to '<< Back To All Trips', trips_path %></p>
+
+<hr>
+
+<div style='width: 800px;'>
+  <div id="map_trip_stops" style='width: 800px; height: 400px;'></div>
+</div>
 
 <hr>
 

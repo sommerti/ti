@@ -72,6 +72,10 @@ class TripsController < ApplicationController
     redirect_to trips_path
   end
 
+  def mytrips
+    @trips = current_user.trips
+  end
+
   private
   
   def trip_params
@@ -84,8 +88,10 @@ class TripsController < ApplicationController
   
   def format_params
     @formatted_params = trip_params
-    @formatted_params[:name].downcase!
-    @formatted_params[:name] = @formatted_params[:name].split(' ').map(&:capitalize).join(' ')
+    
+    # if capitalizing every word
+    # @formatted_params[:name].downcase!
+    # @formatted_params[:name] = @formatted_params[:name].split(' ').map(&:capitalize).join(' ')
 
     # if using auto_html gem
     # @temp[:description] = auto_html(@temp[:description]){ simple_format; link(target: 'blank') }

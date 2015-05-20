@@ -1,0 +1,9 @@
+<h1>My Trips</h1>
+
+<%= link_to 'New Trip', new_trip_path, class: "btn btn-primary btn-sm" %>
+
+<% if @current_user.trips.blank? %>
+	<p>You don't have any trip.</p>
+<% else %>
+	<%= render @current_user.trips %>
+<% end %>

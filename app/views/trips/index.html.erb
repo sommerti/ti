@@ -1,20 +1,20 @@
-<h1>For Admin: View All Trips</h1>
+<h1>All Trips (For Admin Only)</h1>
 
 <!-- show all public trips -->
+<h2>Public Trips:</h2>
 <% if @public_trips.blank? %>
 	<p>No public trip.</p>
 <% else %>
-	<h2>Public Trips:</h2>
 	<%= render @public_trips %>
 <% end %>
 
 <hr>
 
 <!-- show all private trips -->
+<h2>Private Trips:</h2>
 <% if @private_trips.blank? %>
 	<p>No private trip.</p>
 <% else %>
-	<h2>Private Trips:</h2>
 	<%= render @private_trips %>
 <% end %>
 
