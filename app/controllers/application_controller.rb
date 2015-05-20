@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
+  def capitalize_input(input)
+	input.downcase.split(' ').map(&:capitalize).join(' ')
+  end
+
 end

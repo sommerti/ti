@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519004719) do
+ActiveRecord::Schema.define(version: 20150520070854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20150519004719) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "trip_id"
+    t.integer  "position"
   end
 
   add_index "stops", ["city_id"], name: "index_stops_on_city_id", using: :btree
@@ -100,6 +101,15 @@ ActiveRecord::Schema.define(version: 20150519004719) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "country"
+    t.string   "city"
+    t.integer  "age"
+    t.string   "gender"
+    t.string   "role"
+    t.string   "slug"
+    t.text     "description"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

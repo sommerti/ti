@@ -35,7 +35,5 @@ class Trip < ActiveRecord::Base
 	  [:name, :begin_date, :end_date]
 	]
 	end
-
-
-
+	
 end

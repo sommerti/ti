@@ -1,0 +1,10 @@
+<%= simple_form_for @user do |f| %>
+	<%= f.input :firstname %>
+	<%= f.input :lastname %>
+	<%= f.input :country %>
+	<%= f.input :city %>
+	<%= f.input :age %>
+	<%= f.input :gender, collection: ['Male', 'Female'], prompt: "Select"  %>
+	<%= f.input :description, label: 'About' %>
+	<%= f.button :submit, class: "btn btn-warning" %>
+<% end %>

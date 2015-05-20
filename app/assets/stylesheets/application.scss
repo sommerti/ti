@@ -10,6 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require_tree .
+ *= require_self
  *= require font-awesome
  */
 
@@ -69,6 +71,14 @@ p{
 	font-size: 1.2em;
 	
 }
+.signed-in-as-link{
+	a{
+		color: #468847;
+	}
+}
+
+
+
 
 
 // landing page

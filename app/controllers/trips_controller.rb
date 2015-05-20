@@ -90,12 +90,11 @@ class TripsController < ApplicationController
     @formatted_params = trip_params
     
     # if capitalizing every word
-    # @formatted_params[:name].downcase!
-    # @formatted_params[:name] = @formatted_params[:name].split(' ').map(&:capitalize).join(' ')
+    # @formatted_params[:name] = capitalize_input(@formatted_params[:name])
 
     # if using auto_html gem
-    # @temp[:description] = auto_html(@temp[:description]){ simple_format; link(target: 'blank') }
-    # @temp[:description] = @temp[:description][3..(@temp[:description].length-5)] if !@temp[:description].empty?
+    # @formatted_params[:description] = auto_html(@formatted_params[:description]){ simple_format; link(target: 'blank') }
+    # @formatted_params[:description] = @formatted_params[:description][3..(@formatted_params[:description].length-5)] if !@formatted_params[:description].empty?
   end
 
 end

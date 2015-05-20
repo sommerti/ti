@@ -1,0 +1,45 @@
+class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :format_params, only: [:update]
+  
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    @user.slug = nil
+    if @user.update(@formatted_params)
+      flash[:notice] = "Profile updated."
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
+  private
+  
+  def user_params
+    params.require(:user).permit(:firstname, :lastname, :description, :country, :city, :age, :gender)
+  end
+
+  def set_user   
+    @user = User.friendly.find(params[:id])
+  end
+  
+  def format_params
+    @formatted_params = user_params
+    
+    # if capitalizing every word
+    @formatted_params[:firstname] = capitalize_input(@formatted_params[:firstname])
+    @formatted_params[:lastname] = capitalize_input(@formatted_params[:lastname])
+    @formatted_params[:country] = capitalize_input(@formatted_params[:country])
+    @formatted_params[:city] = capitalize_input(@formatted_params[:city])
+
+    # if using auto_html gem
+    # @formatted_params[:description] = auto_html(@formatted_params[:description]){ simple_format; link(target: 'blank') }
+    # @formatted_params[:description] = @formatted_params[:description][3..(@formatted_params[:description].length-5)] if !@formatted_params[:description].empty?
+  end
+end

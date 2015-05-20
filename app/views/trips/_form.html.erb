@@ -2,7 +2,7 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :begin_date, include_blank: true %>
-  <%= f.input :end_date, include_blank: true%>
-  <%= f.input :is_private, as: :boolean, checked_value: true, unchecked_value: false, label: 'Private?', input_html: { checked: false } %>
+  <%= f.input :end_date, include_blank: true %>
+  <%= f.input :is_private, as: :boolean, checked_value: true, unchecked_value: false, label: 'Make it private?', input_html: { checked: false } %>
   <%= f.button :submit %>
 <% end %>
