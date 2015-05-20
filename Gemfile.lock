@@ -1,4 +1,20 @@
 GIT
+  remote: git://github.com/derekprior/momentjs-rails.git
+  revision: 9fac38f9b7603ad5da4cba4d971654370f9e2d7b
+  specs:
+    momentjs-rails (2.10.2)
+      railties (>= 3.1)
+
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: c5405f3486b57a52416caf93b79fc09d56930a82
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.15)
+      momentjs-rails (>= 2.9.0)
+
+GIT
   remote: https://github.com/alibabajan/country_select.git
   revision: 2c56b876740647a9d3493eea2a1a635474ce3b20
   specs:
@@ -247,6 +263,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   country_select!
+  datetimepicker-rails!
   devise (~> 3.4.1)
   faker (~> 1.4.3)
   figaro (~> 1.1.0)
@@ -255,6 +272,7 @@ DEPENDENCIES
   gmaps4rails (~> 2.1.2)
   jbuilder (~> 2.0)
   jquery-rails
+  momentjs-rails (~> 2.9)!
   omniauth-facebook (~> 2.0.1)
   omniauth-twitter (~> 1.2.0)
   pg
