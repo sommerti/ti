@@ -1,9 +1,9 @@
 <h3><%= link_to trip.name, trip_path(trip) %></h3>
 
 <p>
-	<%= trip.begin_date.blank? ? "N.A." : trip.begin_date  %>
+	<i class="fa fa-calendar"></i> <%= trip.begin_date.blank? ? "" : trip.begin_date  %>
 	~ 
-	<%= trip.end_date.blank? ? "N.A." : trip.end_date  %>
+	<i class="fa fa-calendar"></i> <%= trip.end_date.blank? ? "" : trip.end_date  %>
 </p>
 
 <% if current_user.role == "admin" %>

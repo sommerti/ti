@@ -10,9 +10,9 @@
 	</p>
 
 	<p>
-		<%= stop.begin_date.blank? ? "N.A." : stop.begin_date %>
+		<i class="fa fa-calendar"></i> <%= stop.begin_date.blank? ? "" : stop.begin_date %>
 		~
-		<%= stop.end_date.blank? ? "N.A." : stop.end_date %>
+		<i class="fa fa-calendar"></i> <%= stop.end_date.blank? ? "" : stop.end_date %>
 	</p>
 
 	<p>
