@@ -1,5 +1,5 @@
 <div class="row trip-heading">
-	<div class="col-md-7">
+	<div class="col-md-12">
 		<div class="trip-info">
 			<h1>
 				<%= @trip.name %>&nbsp;
@@ -16,48 +16,41 @@
 			<p><%= @trip.description %></p>
 		</div>
 	</div>
-	<div class="col-md-5">		
-	</div>
 </div>
 <div class="row">
-	<div class="col-md-12">
-		<!-- show stops on a trip -->
+
+	<% if @trip.stops.blank? %>
+		
+		<h3 align="center">Currently no stop on this trip.</h3>
+		<%= render "search_for_stop" %>
+		<%= render @trip.comments if !@trip.comments.blank?%>
+		<%= render "comments/form" %>
+		
+	<% else %>
+
 		<div class="container-trip-stops">
-			<% if @trip.stops.blank? %>
-				<p align="center">You haven't created any stop on this trip.</p>
-					
-				<!-- search for a destination on google map -->	
-				<div class="add-stop-search-box text-center">
-			 		<%= form_tag trip_search_stop_path(@trip), class: "form-inline", method: :get do %>
-			        	<%= text_field_tag :search, params[:search], class: "form-control margin-search-action" %>
-			            <%= submit_tag "Add A Stop", class: "btn btn-primary margin-search-action" %>
-					<% end %>
-				</div>
 
-			<% else %>
-				
-				<!-- google map showing all stops -->
-				<div id="map_trip_stops"></div>
+			<div id="map_trip_stops"></div>
+			<%= render "search_for_stop" %>
 
-				<div class="add-stop-search-box text-center">
-			 		<%= form_tag trip_search_stop_path(@trip), class: "form-inline", method: :get do %>
-			        	<%= text_field_tag :search, params[:search], class: "form-control margin-search-action" %>
-			            <%= submit_tag "Add A Stop", class: "btn btn-primary margin-search-action" %>
-					<% end %>
-				</div>
-
+			<div class="col-md-6">
 
 				<h3>Currently <%= pluralize(@trip.stops.size, 'stop') %> on this trip:</h3>
-				
-				<ol>
-					<%= render @trip.stops.order("begin_date ASC") %>
-				</ol>
-			
-			<% end %>
-		</div>
+				<ol><%= render @trip.stops.order("begin_date ASC") %></ol>
+			</div>
+			<div class="col-md-6">
+				<%= render @trip.comments if !@trip.comments.blank? %>
+				<%= render "comments/form" %>
+			</div>
 
-	</div><!--  /col -->
-</div>
+		</div> <!-- /container-trip-stops -->
+	<% end %>
+
+</div> <!-- /row -->
+
+
+
+
 
 
 <!-- google map script -->

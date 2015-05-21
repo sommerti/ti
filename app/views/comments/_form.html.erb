@@ -1,0 +1,7 @@
+<div class="comment-box">
+<% @comment = Comment.new if @comment.blank? %>
+<%= simple_form_for [@trip, @comment] do |f| %>
+	<%= f.input :body, label: "Please enter your comment:" %>
+	<%= f.button :submit, "Comment", class: "btn btn-primary" %>
+<% end %>
+</div>

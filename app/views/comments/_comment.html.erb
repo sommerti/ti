@@ -1,0 +1,11 @@
+<div class="comment">
+	<div class="avatar-image-comment">
+		<div><%= image_tag comment.user.avatar.url %></div>
+		<div class="name-comment"><%= comment.user.fullname %></div>
+	</div>
+	<div>
+		<%= comment.body %>	
+		<%= link_to "Edit", edit_trip_comment_path(@trip, comment), class: "btn btn-warning btn-xs" %>
+		<%= link_to "Delete", trip_comment_path(@trip, comment), class: "btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure?" } %>
+	</div>
+</div>

@@ -19,11 +19,7 @@
 <body role="document">
 
 	<% if user_signed_in? %> 
-		<% if !(controller.controller_name == 'stops' && controller.action_name == 'search_stop') %>
-			<%= render 'layouts/nav_top_signed_in' %>
-		<% else %>
-			<p>&nbsp;</p>
-		<% end %>
+		<%= render 'layouts/nav_top_signed_in' %>
 	<% else %>
 		<%= render 'layouts/nav_top_not_signed_in' %>
 	<% end %> 

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   	end
   	
   	resources :stops
+    resources :comments
+    
   end
 
 end

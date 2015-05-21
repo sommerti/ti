@@ -85,6 +85,15 @@ p{
 .trip-library-search-box{
 	margin: 16px 0 0 0;
 }
+.comment{
+	margin: 20px 0 60px 0;
+}
+.name-comment{
+	font-size: 0.8em;
+}
+.comment-box{
+	margin-top: -20px;
+}
 
 
 
@@ -103,7 +112,7 @@ p{
 	border-radius: 5px;
 	width: 100%;
 	height: 350px;
-	margin-top: -20px;
+	margin: -20px 15px 0 15px;
 }
 #map_city_results{
 	border-radius: 5px;
@@ -393,12 +402,22 @@ p{
 			border-radius: 100%;
 		}
 }
+.avatar-image-comment{
+		img{
+			width: 50px;
+			border-radius: 100%;
+		}
+		float: left;
+		clear: left;
+		margin: 0 15px 0 0px;
+		text-align: center;
+}
 
 .avatar-profile{
 		img{
-			width: 150px;
+			width: 120px;
 			border-radius: 5px;
-			margin: 0 0 10px 0;
+			margin: 10px 0 10px 0;
 		}
 }
 

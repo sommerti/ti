@@ -17,6 +17,7 @@ class StopsController < ApplicationController
       flash[:alert] = "Stop creation failed."
     end
 
+    # if using modal pop-up
     if session[:search_stop_switch] == "on"
       session[:search_stop_switch] = "off"
       redirect_to trip_search_stop_path(@trip)  

@@ -17,7 +17,7 @@
 class Trip < ActiveRecord::Base
   	belongs_to :user
   	has_many :stops, dependent: :destroy
-  	has_many :countries, through: :stop
+  	has_many :comments, dependent: :destroy
 
   	validates :name, presence: true
 
@@ -46,5 +46,5 @@ class Trip < ActiveRecord::Base
 	def self.text_search(query)
 		search(query)
 	end
-	
+		
 end
