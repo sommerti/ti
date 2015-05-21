@@ -25,13 +25,9 @@
 				<!-- google map showing all stops -->
 				<div id="map_trip_stops"></div>
 
-				<div class="add-stop-search-box text-center">
-			 		<%= form_tag trip_search_stop_path(@trip), class: "form-inline", method: :get do %>
-			        	<%= text_field_tag :search, params[:search], class: "form-control margin-search-action" %>
-			            <%= submit_tag "Add A Stop", class: "btn btn-primary margin-search-action" %>
-					<% end %>
+				<div class="text-center">
+					<button id="add_stop" class="btn btn-primary btn-lg">Add A Stop</button>
 				</div>
-
 
 				<h3>Currently <%= pluralize(@trip.stops.size, 'stop') %> on this trip:</h3>
 				
@@ -44,6 +40,48 @@
 
 	</div><!--  /col -->
 </div>
+
+
+
+
+
+<!-- modal popup -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="loading">Please wait...</div>
+      <iframe src="" frameborder="0" width="900px;" height="650px;"></iframe>
+      </div>
+  </div>
+</div>
+
+
+<!-- modal script -->
+<script>
+
+$('#add_stop').click(function(){
+
+	$('.modal').on('shown.bs.modal',function(){
+	  $(this).find('iframe').attr('src','<%= trip_search_stop_path(@trip) %>')
+	})
+
+	$('.modal').on('hidden.bs.modal', function () {
+ 	  location.reload();
+	})
+
+    $('.modal').modal({show:true})
+    
+    $('iframe').load(function() {
+    $('.loading').hide();
+});
+    
+})
+</script>
+
+
+
+
+
 
 
 <!-- google map script -->

@@ -1,28 +1,12 @@
 <div class="panel panel-search">
 	<!-- user searches for a destination that could be a country, region or city -->
 	<div class="search-stop">
-		<h3>Add a stop to your trip</h3>
+		<h1>Add a stop to your trip</h1>
  		<%= form_tag trip_search_stop_path(@trip), class: "form-inline", method: :get do %>
         	<%= text_field_tag :search, params[:search], class: "form-control margin-search-action" %>
             <%= submit_tag "Search", class: "btn btn-primary btn-sm margin-search-action" %>
 		<% end %>
 	</div>
-
-	<!-- show stops on a trip only if not performing a search -->
-	<% if params[:search].blank? %>
-		<div class="container-trip-stops">
-			<% if @trip.stops.blank? %>
-				<p>You haven't created any stop on this trip.</p>
-			<% else %>
-
-				<h3>Currently <%= pluralize(@trip.stops.size, 'stop') %> on this trip:</h3>
-				<ol>
-					<%= render @trip.stops.order("begin_date ASC") %>
-				</ol>
-
-			<% end %>
-		</div>
-	<% end %>
 
 	<!-- return search result -->
 	<div class="search-results">

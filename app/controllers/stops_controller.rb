@@ -12,7 +12,7 @@ class StopsController < ApplicationController
     @stop = @trip.stops.new(stop_create_update_params)
 
     if @stop.save
-      flash[:notice] = "Stop created."
+      flash[:notice] = "Stop added to trip."
     else
       flash[:alert] = "Stop creation failed."
     end
