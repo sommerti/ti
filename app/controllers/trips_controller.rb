@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:trip_library]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :clone_trip]
   before_action :format_params, only: [:create, :update]
 
   def index
@@ -68,11 +68,22 @@ class TripsController < ApplicationController
   def destroy
     @trip.destroy
     flash[:notice] = "Trip deleted."
-    redirect_to trips_path
+    redirect_to my_trips_path
   end
+
+  def clone_trip
+      @cloned_trip = @trip.deep_clone include: :stops
+      @cloned_trip.name = "#{@trip.name} (CLONED)"
+      @cloned_trip.user = current_user
+      @cloned_trip.save
+
+      redirect_to my_trips_path
+  end
+
 
   def my_trips
     @trips = current_user.trips
+
   end
 
   def trip_library

@@ -1,7 +1,11 @@
 <div class="row trip-heading">
 	<div class="col-md-7">
 		<div class="trip-info">
-			<h1><%= @trip.name %>&nbsp;<%= link_to 'Edit Trip Info', edit_trip_path(@trip), class: "btn btn-warning btn-sm" %> </h1>
+			<h1>
+				<%= @trip.name %>&nbsp;
+				<%= link_to 'Edit Trip Info', edit_trip_path(@trip), class: "btn btn-warning btn-sm" %> 
+				<%= link_to 'Clone Trip', clone_trip_trip_path(@trip), method: :post, class: "btn btn-success btn-sm" %>
+			</h1>
 
 			<h4>
 				<i class="fa fa-calendar"></i> <%= @trip.begin_date.blank? ? "" : @trip.begin_date  %>

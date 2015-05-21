@@ -8,7 +8,7 @@
 		<% if @current_user.trips.blank? %>
 			<p>You don't have any trip.</p>
 		<% else %>
-			<%= render @current_user.trips %>
+			<%= render @current_user.trips.order("CREATED_AT DESC") %>
 		<% end %>
 	</div>
 	<div class="col-md-8">

@@ -21,6 +21,16 @@
       <ul class="nav navbar-nav">
         
         <!-- display roll-over highlight if current page -->
+
+        <li class=
+          <% if controller.class == TripsController && controller.action_name == 'trip_library' %>
+            "active"
+          <% end %>
+        >
+          <%= link_to 'Trip Library', trip_library_path%>
+        </li>
+  
+
         <li class=
           <% if controller.class == Devise::RegistrationsController && controller.action_name == 'new' %>
             "active"

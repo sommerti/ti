@@ -32,6 +32,8 @@ gem 'figaro', '~> 1.1.0'
 gem 'rails_12factor', group: :production
 gem 'seed-fu', '~> 2.3.5'
 gem 'faker', '~> 1.4.3'
+gem 'deep_cloneable', '~> 2.1.1'
+
 
 group :development, :test do
   gem 'byebug'
