@@ -4,5 +4,6 @@
 	<%= f.input :city_id, as: :hidden  %>
  	<%= f.input :begin_date, include_blank: true, as: :date_picker, label: "Begin date (optional)" %>
   	<%= f.input :end_date, include_blank: true, as: :date_picker, label: "End date (optional)"  %>
+  	<%= f.input :description %>
 	<%= f.button :submit, "Add To Trip", class: "btn btn-primary" %>
 <% end %>

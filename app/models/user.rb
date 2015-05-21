@@ -24,6 +24,12 @@
 #  role                   :string
 #  slug                   :string
 #  description            :text
+#  provider               :string
+#  uid                    :string
+#  avatar_file_name       :string
+#  avatar_content_type    :string
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 class User < ActiveRecord::Base

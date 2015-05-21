@@ -2,16 +2,17 @@
 #
 # Table name: stops
 #
-#  id         :integer          not null, primary key
-#  country_id :integer
-#  region_id  :integer
-#  city_id    :integer
-#  begin_date :date
-#  end_date   :date
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  trip_id    :integer
-#  position   :integer
+#  id          :integer          not null, primary key
+#  country_id  :integer
+#  region_id   :integer
+#  city_id     :integer
+#  begin_date  :date
+#  end_date    :date
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  trip_id     :integer
+#  position    :integer
+#  description :text
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
