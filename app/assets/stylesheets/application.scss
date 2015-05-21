@@ -78,8 +78,6 @@ p{
 	}
 }
 .profile-table{
-	margin-left: 5px;
-
 	td{
 		padding: 5px 10px 5px 0;
 	}
@@ -360,6 +358,15 @@ p{
 			border-radius: 100%;
 		}
 }
+
+.avatar-profile{
+		img{
+			width: 150px;
+			border-radius: 5px;
+			margin: 0 0 10px 0;
+		}
+}
+
 .avatar-current-user{
 		width: 80px;
 		border-radius: 5px;

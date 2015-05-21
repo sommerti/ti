@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :format_params, only: [:update]
-  
+
   def show
   end
 
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :description, :country, :city, :age, :gender)
+    params.require(:user).permit(:firstname, :lastname, :description, :country, :city, :age, :gender, :avatar)
   end
 
   def set_user   

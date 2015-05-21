@@ -59,54 +59,6 @@
 </div>
 
 
-
-
-
-<button class="btn btn-primary">show modal</button>
-
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="loading">Please wait...</div>
-      <iframe src="" frameborder="0" width="1000px;" height="800px;">
-      
-      </iframe>
-
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-      </div>
-  </div>
-</div>
-
-
-<!-- model script -->
-<script>
-
-$('.btn').click(function(){
-
-	$('.modal').on('shown.bs.modal',function(){
-	  $(this).find('iframe').attr('src','/trips')
-	})
-
-	$('.modal').on('hidden.bs.modal', function () {
- 	  location.reload();
-	})
-
-    $('.modal').modal({show:true})
-    
-    $('iframe').load(function() {
-    $('.loading').hide();
-});
-    
-})
-</script>
-
-
-
-
-
-
-
 <!-- google map script -->
 <script>
 

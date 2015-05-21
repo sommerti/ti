@@ -5,6 +5,7 @@
 	<%= f.input :city %>
 	<%= f.input :age %>
 	<%= f.input :gender, collection: ['Male', 'Female'], prompt: "Select"  %>
-	<%= f.input :description, label: 'About' %>
+	<%= f.input :avatar, as: :file %>
+	<%= f.input :description, label: 'About me' %>
 	<%= f.button :submit, class: "btn btn-warning" %>
 <% end %>
