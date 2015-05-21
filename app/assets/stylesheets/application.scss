@@ -42,7 +42,7 @@ p{
 }
 
 
-// others
+// general
 #notice{
 	h2{
 		font-size: 1.2em;
@@ -82,6 +82,11 @@ p{
 		padding: 5px 10px 5px 0;
 	}
 }
+.trip-library-search-box{
+	margin-top: 15px;
+}
+
+
 
 
 // trip & stops
@@ -127,6 +132,9 @@ p{
 .add-stop-search-box{
 	margin: 40px 0 50px 0;
 }
+
+
+
 
 // landing page
 .landing-page-menu{
@@ -231,6 +239,10 @@ p{
 	}
 }
 
+
+
+
+
 // containers
 .container{
 	width: 80%;
@@ -254,6 +266,9 @@ p{
 	width: 50%;
 	margin-bottom: 50px;
 }
+.container-trip{
+	margin-bottom: 40px;
+}
 .container-trip-stops{
 	margin-top: 20px;
 }
@@ -266,6 +281,11 @@ p{
     -moz-column-gap: 20px;
     column-gap: 20px;
 }
+
+
+
+
+
 
 // panels
 .panel{
@@ -292,6 +312,9 @@ p{
 .panel-search{
 	padding: 20px;
 }
+
+
+
 
 
 // narrower screens
@@ -402,6 +425,7 @@ p{
 
 	}
 }
+
 
 
 

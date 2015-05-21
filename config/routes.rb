@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  root to: 'trips#mytrips'
+  root to: "trips#trip_library"
   
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   
-  get "mytrips", to: 'trips#mytrips'
+  get "my_trips", to: "trips#my_trips"
+  get "trip_library", to: "trips#trip_library"
 
   resources :users
   

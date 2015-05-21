@@ -1,3 +1,4 @@
+<div class="container-trip">
 <h3><%= link_to trip.name, trip_path(trip) %></h3>
 
 <p>
@@ -6,11 +7,14 @@
 	<i class="fa fa-calendar"></i> <%= trip.end_date.blank? ? "" : trip.end_date  %>
 </p>
 
-<% if current_user.role == "admin" %>
-	<p><%= trip.user.fullname %></p>
-<% end %>
+<% if trip.user != current_user %>
+	<p>Created by <%= trip.user.fullname %></p>
+<% else %>
+	<p>Created by me</p>
 
-<p>	
-	<%= link_to 'Edit', edit_trip_path(trip), class: "btn btn-warning btn-xs" %>
-	<%= link_to 'Delete', trip_path(trip), class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+	<p>	
+		<%= link_to 'Edit', edit_trip_path(trip), class: "btn btn-warning btn-xs" %>
+		<%= link_to 'Delete', trip_path(trip), class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+	</p>
+<% end %>
+</div>

@@ -16,7 +16,31 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">  
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      
+      <ul class="nav navbar-nav">
+        
+        <!-- display roll-over highlight if current page -->
+        <li class=
+          <% if controller.class == TripsController && controller.action_name == 'trip_library' %>
+            "active"
+          <% end %>
+        >
+          <%= link_to 'Trip Library', trip_library_path%>
+        </li>
+  
+        <li class=
+          <% if controller.class == TripsController && controller.action_name == 'my_trips' %>
+            "active"
+          <% end %>
+        >
+          <%= link_to 'My Trips', my_trips_path %>
+        </li>
+
+      </ul>
+
+
+  
       <p class="navbar-text navbar-right">
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "navbar-link" %>
       </p>

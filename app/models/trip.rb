@@ -35,5 +35,13 @@ class Trip < ActiveRecord::Base
 	  [:name, :begin_date, :end_date]
 	]
 	end
+
+	include PgSearch
+	pg_search_scope :search, against: [:name, :description],
+							using: {tsearch: {dictionary: "english"}}
+
+	def self.text_search(query)
+		search(query)
+	end
 	
 end

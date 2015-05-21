@@ -71,9 +71,18 @@ class TripsController < ApplicationController
     redirect_to trips_path
   end
 
-  def mytrips
+  def my_trips
     @trips = current_user.trips
   end
+
+  def trip_library
+    @public_trips = Trip.is_public    
+
+    if !params[:search].nil?
+      @trip_results = Trip.text_search(params[:search]) 
+    end
+  end
+
 
   private
   

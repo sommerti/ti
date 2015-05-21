@@ -21,7 +21,8 @@
 		<div class="container-trip-stops">
 			<% if @trip.stops.blank? %>
 				<p align="center">You haven't created any stop on this trip.</p>
-
+					
+				<!-- search for a destination on google map -->	
 				<div class="add-stop-search-box text-center">
 			 		<%= form_tag trip_search_stop_path(@trip), class: "form-inline", method: :get do %>
 			        	<%= text_field_tag :search, params[:search], class: "form-control margin-search-action" %>

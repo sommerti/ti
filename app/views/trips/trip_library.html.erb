@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-md-3">
+		<h1>Trip Library</h1>
+	</div>		
+
+	<div class="col-md-9">
+		<div class="trip-library-search-box">
+			<!-- search for a trip in Trip Library -->
+	 		<%= form_tag trip_library_path, class: "form-inline", method: :get do %>
+	        	<%= text_field_tag :search, params[:search], class: "form-control margin-search-action" %>
+	            <%= submit_tag "Search Trip Library", class: "btn btn-primary btn-sm margin-search-action" %>
+			<% end %>
+		</div>
+
+	</div>		
+</div>
+<div class="row">	
+	<div class="col-md-8">
+		<% if params[:search].blank? %>
+			<%= render @public_trips %>
+		<% else %>
+			<% if @trip_results.blank? %>
+				<p>No trip matching your search.</p> 
+			<% else %>
+				<%= render @trip_results %>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="col-md-4">
+		
+	</div>	
+</div>

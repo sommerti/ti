@@ -16,31 +16,7 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-      
-      <ul class="nav navbar-nav">
-        
-        <!-- display roll-over highlight if current page -->
-        <li class=
-          <% if controller.class == WelcomeController && controller.action_name == 'index' %>
-            "active"
-          <% end %>
-        >
-          <%= link_to 'Home', root_path %>
-        </li>
-  
-        <li class=
-          <% if controller.class == TripsController && controller.action_name == 'mytrips' %>
-            "active"
-          <% end %>
-        >
-          <%= link_to 'My Trips', mytrips_path %>
-        </li>
-
-      </ul>
-
-
-  
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">  
       <p class="navbar-text navbar-right">
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "navbar-link" %>
       </p>
