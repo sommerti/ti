@@ -1,6 +1,6 @@
 class StopsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trip, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_trip, only: [:new, :create, :edit, :update, :destroy, :search_stop]
   before_action :set_stop, only: [:edit, :update, :destroy]
   
   def new
@@ -17,8 +17,13 @@ class StopsController < ApplicationController
       flash[:alert] = "Stop creation failed."
     end
 
-    # redirect_to trip_stop_path(@trip, @stop)
-    redirect_to @trip
+    if session[:search_stop_switch] == "on"
+      session[:search_stop_switch] = "off"
+      redirect_to trip_search_stop_path(@trip)  
+    else
+      redirect_to @trip
+    end
+  
   end
 
   def edit
@@ -40,6 +45,28 @@ class StopsController < ApplicationController
     @stop.destroy
     flash[:notice] = "Stop deleted."
     redirect_to @trip
+  end
+
+
+  def search_stop
+      # user searches for a destination, result could be country/region/city
+      if !params[:search].nil?
+        @destination = params[:search]
+        @country_results = Country.text_search(@destination) 
+        @region_results = Region.text_search(@destination) 
+        @city_results = City.text_search(@destination) 
+      end
+
+      # add city results onto a google map; only city has latitude/longitude data
+      @hash_city_results = Gmaps4rails.build_markers(@city_results) do |city, marker|
+        marker.lat city.latitude
+        marker.lng city.longitude
+        marker.infowindow  "<div style='width:200px;height:100%;'>
+                              #{city.name}&nbsp;&nbsp;
+                              <a href='stops/new?country_id=#{city.country.id}&region_id=#{city.region.id}&city_id=#{city.id}
+                              '><strong>Add To Trip</strong></a></div>"
+      end
+          
   end
 
 

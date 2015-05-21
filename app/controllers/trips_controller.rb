@@ -17,7 +17,7 @@ class TripsController < ApplicationController
         @city_results = City.text_search(@destination) 
       end
 
-      # add trip's stops onto a google map; only city has latitude/longitude data
+      # add city results onto a google map; only city has latitude/longitude data
       @hash_city_results = Gmaps4rails.build_markers(@city_results) do |city, marker|
         marker.lat city.latitude
         marker.lng city.longitude

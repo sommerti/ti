@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users
   
   resources :trips do
+  	get "search_stop", to: "stops#search_stop"
   	resources :stops
   end
 

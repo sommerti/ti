@@ -10,3 +10,8 @@
 												city_id: city_result.id), class: "btn btn-primary btn-xs" %>
 	</td>
 </tr>
+
+
+<% if params[:controller] == 'stops' and params[:action] == 'search_stop' %>
+	<% session[:search_stop_switch] = "on" %>
+<% end %>
