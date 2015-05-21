@@ -1,7 +1,7 @@
 <div class="panel panel-search">
 	<!-- user searches for a destination that could be a country, region or city -->
 	<div class="search-stop">
-		<h1>Add a stop to your trip</h1>
+		<h1>Add A Stop To "<%= @trip.name %>" <%= link_to 'Back To Trip', @trip, class: "btn btn-warning btn-sm"  %></h1>
  		<%= form_tag trip_search_stop_path(@trip), class: "form-inline", method: :get do %>
         	<%= text_field_tag :search, params[:search], class: "form-control margin-search-action" %>
             <%= submit_tag "Search", class: "btn btn-primary btn-sm margin-search-action" %>
