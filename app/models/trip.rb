@@ -17,6 +17,7 @@
 class Trip < ActiveRecord::Base
   	belongs_to :user
   	has_many :stops, dependent: :destroy
+  	has_many :countries, through: :stop
 
   	validates :name, presence: true
 
@@ -37,8 +38,10 @@ class Trip < ActiveRecord::Base
 	end
 
 	include PgSearch
-	pg_search_scope :search, against: [:name, :description],
-							using: {tsearch: {dictionary: "english"}}
+
+	pg_search_scope :search, against: [:name, :description], 
+					associated_against: { stops: :description }, 
+					using: {tsearch: {dictionary: "english"}}
 
 	def self.text_search(query)
 		search(query)
