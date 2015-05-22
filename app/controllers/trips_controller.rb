@@ -70,7 +70,7 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, @comment
+    authorize! :destroy, @trip
 
     @trip.destroy
     flash[:notice] = "Trip deleted."
