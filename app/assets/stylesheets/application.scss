@@ -40,6 +40,8 @@ p{
 	// font-size: 1.2em;
 	// letter-spacing: -0.3px;
 }
+
+
 .clearfix:before,
 .clearfix:after {
   content: "";
@@ -56,7 +58,9 @@ p{
 .inline-block{
 	display: inline-block;
 }
-
+body.modal-background{
+	background-color: white;
+}
 
 
 
@@ -140,7 +144,7 @@ p{
 	}	
 }
 #add_stop{
-	margin: 25px 0 0 0;
+	margin: 15px 0 15px 0;
 }
 .add-stop-search-box{
 	margin: 20px 0 0 0;
@@ -167,7 +171,6 @@ p{
 	overflow-y: scroll;
 	height: 550px;
 }
-
 
 
 

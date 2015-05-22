@@ -16,10 +16,18 @@
 
 </head>
 
-<body role="document">
+<body role="document" 
+		<% if (controller.controller_name == 'stops' && controller.action_name == 'search_stop') or (controller.controller_name == 'stops' && controller.action_name == 'new') %>
+		class="modal-background"
+	<% end %>
+	>
 
 	<% if user_signed_in? %> 
-		<%= render 'layouts/nav_top_signed_in' %>
+		<% if (controller.controller_name == 'stops' && controller.action_name == 'search_stop') or (controller.controller_name == 'stops' && controller.action_name == 'new') %>
+			<br>
+		<% else %>
+			<%= render 'layouts/nav_top_signed_in' %>
+		<% end %>
 	<% else %>
 		<%= render 'layouts/nav_top_not_signed_in' %>
 	<% end %> 
@@ -36,7 +44,9 @@
 
 	</div><!-- main -->
 
-	<% if !(controller.controller_name == 'stops' && controller.action_name == 'search_stop') %>
+	<% if (controller.controller_name == 'stops' && controller.action_name == 'search_stop') or (controller.controller_name == 'stops' && controller.action_name == 'new') %>
+		<br>
+	<% else %>
 		<%= render 'layouts/nav_bottom' %>
 	<% end %>
 

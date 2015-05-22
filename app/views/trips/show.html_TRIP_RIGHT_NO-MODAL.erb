@@ -22,13 +22,7 @@
 	<div class="row">
 		<div class="col-md-7">
 
-			<%#= render "search_for_stop" %>		
-
-			<% if can? :update, @trip %>
-				<div class="text-center">
-					<button id="add_stop" class="btn btn-primary btn-lg">Add A Stop</button>
-				</div>
-			<% end %>		
+			<%= render "search_for_stop" %>				
 			
 			<!-- google map -->
 			<div id="map_trip_stops"></div>
@@ -50,46 +44,6 @@
 	</div><!--  /row -->
 
 <% end %>
-
-
-
-
-
-<!-- modal popup -->
-<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header"></div>
-      <div class="modal-body">
-		<iframe src="" frameborder="0" width="865px;" height="550px;"></iframe>
-      </div>
-      <div class="modal-footer"></div>
-  </div>
-</div>
-
-
-<!-- modal script -->
-<script>
-
-$('#add_stop').click(function(){
-
-	$('.modal').on('shown.bs.modal',function(){
-	  $(this).find('iframe').attr('src','<%= trip_search_stop_path(@trip) %>')
-	})
-
-	$('.modal').on('hidden.bs.modal', function () {
- 	  location.reload();
-	})
-
-    $('.modal').modal({show:true})
-    
-    $('iframe').load(function() {
-    $('.loading').hide();
-});
-    
-})
-</script>
-
 
 
 

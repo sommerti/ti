@@ -34,7 +34,7 @@ class TripsController < ApplicationController
         marker.infowindow "<div style='width:200px;height:100%;'>#{stop.city.name}</div>"
       end
 
-      @trip_stops_ranked = @trip.stops.order("begin_date ASC")
+      @trip_stops_ranked = @trip.stops.order("CREATED_AT ASC")
       
   end
 
