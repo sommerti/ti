@@ -53,6 +53,9 @@ p{
 .clearfix {
   zoom: 1; /* ie 6/7 */
 }
+.inline-block{
+	display: inline-block;
+}
 
 
 
@@ -109,17 +112,11 @@ p{
 
 
 // trip & stops
-.trip-info{
-	margin-left: -15px;
-}
-.trip-heading{
-	margin: 0 0 5px 0;
-}
 #map_trip_stops{
 	border-radius: 5px;
 	width: 100%;
 	height: 350px;
-	margin: -20px 15px 0 15px;
+	margin: 20px 15px 50px 0;
 }
 #map_city_results{
 	border-radius: 5px;
@@ -146,7 +143,10 @@ p{
 	margin: 25px 0 0 0;
 }
 .add-stop-search-box{
-	margin: 40px 0 50px 0;
+	margin: 20px 0 0 0;
+}
+.single-trip-stop{
+	margin: 15px 0 25px 20px;
 }
 .table-stops{
 	tbody{
@@ -160,6 +160,16 @@ p{
 	//     display:block;
 	// }
 }
+.show_number_stops{
+	margin: 15px 0 15px 30px;
+}
+.all-trip-stops{
+	overflow-y: scroll;
+	height: 550px;
+}
+
+
+
 
 
 
@@ -173,9 +183,7 @@ p{
 .comment-box{
 	margin-top: 20px;
 }
-.comment-body-buttons{
 
-}
 
 
 

@@ -1,0 +1,18 @@
+<h1>
+	<%= @trip.name %>
+	<% if can? :update, @trip %>
+		<%= link_to 'Edit Trip Info', edit_trip_path(@trip), class: "btn btn-warning btn-sm" %> 
+	<% end %>
+	<%= link_to 'Clone Trip', clone_trip_trip_path(@trip), method: :post, class: "btn btn-success btn-sm" %>
+</h1>
+
+<h4 class="inline-block">
+	<i class="fa fa-calendar"></i> <%= @trip.begin_date.blank? ? "" : @trip.begin_date %>
+	~ 
+	<i class="fa fa-calendar"></i> <%= @trip.end_date.blank? ? "" : @trip.end_date %>
+	
+	, created by <%= @trip.user == current_user ? "me" : @trip.user.fullname %>
+</h4>
+
+
+<p><%= @trip.description %></p>

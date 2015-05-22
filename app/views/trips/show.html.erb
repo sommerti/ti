@@ -1,57 +1,49 @@
-<div class="row trip-heading">
-	<div class="col-md-12">
-		<div class="trip-info">
-			<h1>
-				<%= @trip.name %>&nbsp;
-				<% if can? :update, @trip %>
-					<%= link_to 'Edit Trip Info', edit_trip_path(@trip), class: "btn btn-warning btn-sm" %> 
-				<% end %>
-
-				<%= link_to 'Clone Trip', clone_trip_trip_path(@trip), method: :post, class: "btn btn-success btn-sm" %>
-			</h1>
-
-			<h4>
-				<i class="fa fa-calendar"></i> <%= @trip.begin_date.blank? ? "" : @trip.begin_date  %>
-				~ 
-				<i class="fa fa-calendar"></i> <%= @trip.end_date.blank? ? "" : @trip.end_date  %>
-			</h4>
-			<p><strong>Created by <%= @trip.user == current_user ? "me" : @trip.user.fullname %></strong></p>
-			<p><%= @trip.description %></p>
+<% if @trip.stops.blank? %>
+	<div class="row">
+		<div class="col-md-12">
+			<%= render "trip_info" %>
+		</div>
+		<div class="col-md-12">
+			<h3>Currently no stop on this trip.</h3>
+			<%= render "search_for_stop" %>
 		</div>
 	</div>
-</div>
-<div class="row">
 
-	<% if @trip.stops.blank? %>
+<% else %>
+	<div class="row">	
+		<div class="col-md-7">
+			<%= render "trip_info" %>
+		</div>
+		<div class="col-md-5">
 		
-		<h3 align="center">Currently no stop on this trip.</h3>
-		<%= render "search_for_stop" %>
-		<%= render @trip.comments if !@trip.comments.blank?%>
-		<%= render "comments/form" %>
-		
-	<% else %>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-7">
 
-		<div class="container-trip-stops">
-
+			<%= render "search_for_stop" %>				
+			
+			<!-- google map -->
 			<div id="map_trip_stops"></div>
-			<%= render "search_for_stop" %>
 
-			<div class="col-md-6">
+			<h3>Comments</h3>
+			<!-- show comments only if there are stops on a trip -->
+			<%= render @trip.comments if !@trip.comments.blank? %>
+			<%= render "comments/form" %>
+		</div>
 
-				<h3>Currently <%= pluralize(@trip.stops.size, 'stop') %> on this trip:</h3>
-				<table class="table table-stops" id="sortable">
-					<%= render @trip_stops_ranked %>
-				</table>
-			</div>
-			<div class="col-md-6">
-				<%= render @trip.comments if !@trip.comments.blank? %>
-				<%= render "comments/form" %>
-			</div>
+		<div class="col-md-5">
+			<h3 class="show_number_stops">Currently <%= pluralize(@trip.stops.size, 'stop') %> on this trip:</h3>
+			<!-- <table class="table table-stops"> -->
+			<ol class="all-trip-stops">
+				<%= render @trip_stops_ranked %>
+			</ol>
+			<!-- </table> -->
+		</div>
+	</div><!--  /row -->
 
-		</div> <!-- /container-trip-stops -->
-	<% end %>
-
-</div> <!-- /row -->
+<% end %>
 
 
 

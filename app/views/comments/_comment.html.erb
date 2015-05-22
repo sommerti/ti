@@ -3,7 +3,7 @@
 		<div><%= link_to image_tag(comment.user.avatar.url(:thumb)), user_path(comment.user) %></div>
 		<div class="name-comment"><%= comment.user.fullname %></div>
 	</div>
-	<div class="comment-body-buttons">
+	<div>
 		<%= comment.body %>	
 		<% if can? :update, comment %>
 			<%= link_to "Edit", edit_trip_comment_path(@trip, comment), class: "btn btn-warning btn-xs" %>
