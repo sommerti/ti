@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!, except: [:trip_library]
+  before_action :authenticate_user!, except: [:trip_library, :show]
   before_action :set_trip, only: [:show, :edit, :update, :destroy, :clone_trip]
   before_action :format_params, only: [:create, :update]
 
@@ -33,6 +33,8 @@ class TripsController < ApplicationController
         marker.lng stop.city.longitude
         marker.infowindow "<div style='width:200px;height:100%;'>#{stop.city.name}</div>"
       end
+
+      @trip_stops_ranked = @trip.stops.order("begin_date ASC")
       
   end
 

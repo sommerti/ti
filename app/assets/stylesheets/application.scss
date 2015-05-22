@@ -115,9 +115,6 @@ p{
 .trip-heading{
 	margin: 0 0 5px 0;
 }
-.single-trip-stop{
-	margin: 15px 0 25px 0;
-}
 #map_trip_stops{
 	border-radius: 5px;
 	width: 100%;
@@ -151,7 +148,18 @@ p{
 .add-stop-search-box{
 	margin: 40px 0 50px 0;
 }
+.table-stops{
+	tbody{
+	  overflow-y: scroll;
+	  height: 500px;
+	  width: 100%;
+	  position: absolute;
+	}
 
+	td{
+	    display:block;
+	}
+}
 
 
 
