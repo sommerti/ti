@@ -12,6 +12,13 @@ class UsersController < ApplicationController
   def update
     @user.slug = nil
     if @user.update(@formatted_params)
+        
+        # check if user wants to delete avatar  
+        if @formatted_params[:delete_avatar] == "true"
+          @user.avatar = nil
+          @user.save
+        end
+      
       flash[:notice] = "Profile updated."
       redirect_to @user
     else
@@ -22,7 +29,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :description, :country, :city, :age, :gender, :avatar)
+    params.require(:user).permit(:firstname, :lastname, :description, :country, :city, :age, :gender, :avatar, :delete_avatar)
   end
 
   def set_user   

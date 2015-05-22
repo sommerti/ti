@@ -30,6 +30,7 @@
 #  avatar_content_type    :string
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
+#  delete_avatar          :boolean
 #
 
 require 'test_helper'
