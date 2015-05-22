@@ -1,12 +1,14 @@
 <%if @user == current_user %>
 	<h1>
     My Profile
-    <% if @user == current_user %>
     <%= link_to 'Edit Profile', edit_user_path, class: "btn btn-warning btn-sm" %>
-    <% end %>
   </h1>
 <% else %>
-	<h1><%= @user.fullname %>'s user</h1>
+  <% if @user.firstname.blank? and @user.lastname.blank? %>
+	  <h1>User Profile</h1>
+  <% else %>
+    <h1><%= @user.fullname %>'s Profile</h1>
+  <% end %>
 <% end %>
 
 <div class="row">

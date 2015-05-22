@@ -61,6 +61,13 @@ p{
 body.modal-background{
 	background-color: white;
 }
+.modal-header{
+	border-width: 0;
+}
+.modal-footer{
+	border-width: 0;
+
+}
 
 
 
@@ -301,17 +308,17 @@ body.modal-background{
 
 // containers
 .container{
-	width: 80%;
+	width: 90%;
 	margin-bottom: 80px;
 }
 
 // modifying .container-fluid of top navigation
 .narrower-nav-top{
-	width: 80%;
+	width: 90%;
 }
 
 .container-navbar-bottom{
-	width: 80%;
+	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 }
