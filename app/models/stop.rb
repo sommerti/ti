@@ -20,7 +20,4 @@ class Stop < ActiveRecord::Base
   belongs_to :region
   belongs_to :city
   belongs_to :trip
-
-  include RankedModel
-  ranks :row_order
 end
