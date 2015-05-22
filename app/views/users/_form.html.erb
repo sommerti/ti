@@ -6,6 +6,7 @@
 	<%= f.input :age %>
 	<%= f.input :gender, collection: ['Male', 'Female'], prompt: "Select"  %>
 	<%= f.input :avatar, as: :file %>
+	<%= f.input :delete_avatar, as: :boolean, checked_value: true, unchecked_value: false, label: "Delete exisitng avatar?", input_html: { checked: false } %>	
 	<%= f.input :description, label: 'About me' %>
 	<%= f.button :submit, class: "btn btn-warning" %>
 <% end %>

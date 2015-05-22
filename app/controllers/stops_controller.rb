@@ -9,9 +9,11 @@ class StopsController < ApplicationController
   end
 
   def create
+    authorize! :create, @stop
+
     @stop = @trip.stops.new(stop_create_update_params)
 
-    if @stop.save
+    if @trip.user == current_user and @stop.save
       flash[:notice] = "Stop added to trip."
     else
       flash[:alert] = "Stop creation failed."
@@ -32,6 +34,8 @@ class StopsController < ApplicationController
   end
 
   def update
+    authorize! :update, @stop
+
     if @stop.update(stop_create_update_params)
       flash[:notice] = "Stop updated."
     else
@@ -43,6 +47,8 @@ class StopsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @stop
+
     @stop.destroy
     flash[:notice] = "Stop deleted."
     redirect_to @trip

@@ -41,6 +41,8 @@ class TripsController < ApplicationController
   end
 
   def create
+    authorize! :create, @trip
+
     @trip = current_user.trips.new(@formatted_params)
 
     if @trip.save
@@ -56,6 +58,8 @@ class TripsController < ApplicationController
   end
 
   def update
+    authorize! :update, @trip
+
     @trip.slug = nil
     if @trip.update(@formatted_params)
       flash[:notice] = "Trip updated."
@@ -66,6 +70,8 @@ class TripsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @comment
+
     @trip.destroy
     flash[:notice] = "Trip deleted."
     redirect_to my_trips_path

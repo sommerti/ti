@@ -4,7 +4,9 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
 
   def create
-  	@comment = @trip.comments.new(comment_params)
+  	authorize! :create, @comment
+
+    @comment = @trip.comments.new(comment_params)
   	@comment.user = current_user
 
   	if @comment.save
@@ -21,6 +23,8 @@ class CommentsController < ApplicationController
   end
 
   def update
+    authorize! :update, @comment
+
   	if @comment.update(comment_params)
   		flash[:notice] = "Comment added."
   		redirect_to @trip
@@ -30,7 +34,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-  	@comment.destroy
+    authorize! :update, @comment
+   	@comment.destroy
   	flash[:notice] = "Comment deleted"
   	redirect_to @trip
   end

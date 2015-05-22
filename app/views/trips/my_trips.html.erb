@@ -2,7 +2,9 @@
 	<div class="col-md-4">
 		<h1>
 			My Trips 
-			<%= link_to 'Create A New Trip', new_trip_path, class: "btn btn-primary btn-sm" %>
+			<% if can? :create, @trip %>
+				<%= link_to 'Create A New Trip', new_trip_path, class: "btn btn-primary btn-sm" %>
+			<% end %>
 		</h1>
 
 		<% if @current_user.trips.blank? %>

@@ -3,7 +3,10 @@
 		<div class="trip-info">
 			<h1>
 				<%= @trip.name %>&nbsp;
-				<%= link_to 'Edit Trip Info', edit_trip_path(@trip), class: "btn btn-warning btn-sm" %> 
+				<% if can? :update, @trip %>
+					<%= link_to 'Edit Trip Info', edit_trip_path(@trip), class: "btn btn-warning btn-sm" %> 
+				<% end %>
+
 				<%= link_to 'Clone Trip', clone_trip_trip_path(@trip), method: :post, class: "btn btn-success btn-sm" %>
 			</h1>
 
@@ -12,7 +15,7 @@
 				~ 
 				<i class="fa fa-calendar"></i> <%= @trip.end_date.blank? ? "" : @trip.end_date  %>
 			</h4>
-
+			<p><strong>Created by <%= @trip.user == current_user ? "me" : @trip.user.fullname %></strong></p>
 			<p><%= @trip.description %></p>
 		</div>
 	</div>

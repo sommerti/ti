@@ -40,6 +40,23 @@ p{
 	// font-size: 1.2em;
 	// letter-spacing: -0.3px;
 }
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+ 
+.clearfix:after {
+  clear: both;
+}
+ 
+.clearfix {
+  zoom: 1; /* ie 6/7 */
+}
+
+
+
+
 
 
 // general
@@ -85,15 +102,8 @@ p{
 .trip-library-search-box{
 	margin: 16px 0 0 0;
 }
-.comment{
-	margin: 20px 0 60px 0;
-}
-.name-comment{
-	font-size: 0.8em;
-}
-.comment-box{
-	margin-top: -20px;
-}
+
+
 
 
 
@@ -141,6 +151,24 @@ p{
 .add-stop-search-box{
 	margin: 40px 0 50px 0;
 }
+
+
+
+
+// commenting
+.comment{
+	margin: 20px 0 20px 0;
+}
+.name-comment{
+	font-size: 0.8em;
+}
+.comment-box{
+	margin-top: 20px;
+}
+.comment-body-buttons{
+
+}
+
 
 
 
@@ -409,7 +437,7 @@ p{
 		}
 		float: left;
 		clear: left;
-		margin: 0 15px 0 0px;
+		margin: 4px 15px 0 0px;
 		text-align: center;
 }
 

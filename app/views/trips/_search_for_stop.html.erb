@@ -1,6 +1,13 @@
-<div class="add-stop-search-box text-center">
-		<%= form_tag trip_search_stop_path(@trip), class: "form-inline", method: :get do %>
-    	<%= text_field_tag :search, params[:search], class: "form-control margin-search-action" %>
-        <%= submit_tag "Add A Stop", class: "btn btn-primary margin-search-action" %>
-	<% end %>
-</div>
+<% if can? :update, @trip %>
+	<div class="add-stop-search-box text-center">
+			<%= form_tag trip_search_stop_path(@trip), class: "form-inline", method: :get do %>
+	    	<%= text_field_tag :search, params[:search], class: "form-control margin-search-action" %>
+	        <%= submit_tag "Add A Stop", class: "btn btn-primary margin-search-action" %>
+		<% end %>
+	</div>
+
+<% else %>
+
+<br>
+
+<% end %>

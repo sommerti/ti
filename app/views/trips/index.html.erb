@@ -1,21 +1,23 @@
-<h1>All Trips</h1>
+<h1>Are You Admin?</h1>
 
-<!-- show all public trips -->
-<h2>Public Trips:</h2>
-<% if @public_trips.blank? %>
-	<p>No public trip.</p>
-<% else %>
-	<%= render @public_trips %>
+<%= if current_user.role = "admin" %>
+	<!-- show all public trips -->
+	<h2>Public Trips:</h2>
+	<% if @public_trips.blank? %>
+		<p>No public trip.</p>
+	<% else %>
+		<%= render @public_trips %>
+	<% end %>
+
+	<hr>
+
+	<!-- show all private trips -->
+	<h2>Private Trips:</h2>
+	<% if @private_trips.blank? %>
+		<p>No private trip.</p>
+	<% else %>
+		<%= render @private_trips %>
+	<% end %>
+
+	<p><%= link_to 'New Trip', new_trip_path %></p>
 <% end %>
-
-<hr>
-
-<!-- show all private trips -->
-<h2>Private Trips:</h2>
-<% if @private_trips.blank? %>
-	<p>No private trip.</p>
-<% else %>
-	<%= render @private_trips %>
-<% end %>
-
-<p><%= link_to 'New Trip', new_trip_path %></p>

@@ -8,36 +8,32 @@ class Ability
       can :manage, :all
     else
       can :read, :all
+      can :create, :all
+    
 
-      can :update, User do |tr|
-        tr.user == user
+      can :update, User do |u|
+        u.user == user
       end
-      can :create, Trip do |tr|
-        tr.user == user
-      end
+
       can :update, Trip do |tr|
         tr.user == user
       end
       can :destroy, Trip do |tr|
         tr.user == user
       end
-      can :create, Stop do |tr|
-        tr.user == user
+
+      can :update, Stop do |s|
+        s.trip.user == user
       end
-      can :update, Stop do |tr|
-        tr.user == user
+      can :destroy, Stop do |s|
+        s.trip.user == user
       end
-      can :destroy, Stop do |tr|
-        tr.user == user
+
+      can :update, Comment do |c|
+        c.user == user
       end
-      can :create, Comment do |tr|
-        tr.user == user
-      end
-      can :update, Comment do |tr|
-        tr.user == user
-      end
-      can :destroy, Comment do |tr|
-        tr.user == user
+      can :destroy, Comment do |c|
+        c.user == user
       end
     end
 

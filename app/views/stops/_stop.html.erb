@@ -18,7 +18,9 @@
 	<p><%= stop.description %></p>
 
 	<p>
-		<%= link_to 'Edit', edit_trip_stop_path(stop.trip, stop), class: "btn btn-warning btn-xs" %>
-		<%= link_to 'Remove', trip_stop_path(stop.trip, stop), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger btn-xs" %>
+		<% if can? :update, @trip %>
+			<%= link_to 'Edit', edit_trip_stop_path(stop.trip, stop), class: "btn btn-warning btn-xs" %>
+			<%= link_to 'Remove', trip_stop_path(stop.trip, stop), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger btn-xs" %>
+		<% end %>
 	</p>
 </li>
