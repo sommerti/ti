@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!, except: [:trip_library, :show]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy, :clone_trip]
+  before_action :set_trip, only: [:show, :big_map, :edit, :update, :destroy, :clone_trip]
   before_action :format_params, only: [:create, :update]
 
   def index
@@ -27,15 +27,30 @@ class TripsController < ApplicationController
                               '><strong>Add To Trip</strong></a></div>"
       end
 
+
+      # rank trips according to creation date
+      @trip_stops_ranked = @trip.stops.order("CREATED_AT ASC")
+
+
       # add trip's stops onto a google map; only city has latitude/longitude data
-      @hash_trip_stops = Gmaps4rails.build_markers(@trip.stops) do |stop, marker|
+      @hash_trip_stops = Gmaps4rails.build_markers(@trip_stops_ranked) do |stop, marker|
         marker.lat stop.city.latitude
         marker.lng stop.city.longitude
         marker.infowindow "<div style='width:200px;height:100%;'>#{stop.city.name}</div>"
       end
-
-      @trip_stops_ranked = @trip.stops.order("CREATED_AT ASC")
       
+  end
+
+  def big_map
+      # rank trips according to creation date
+      @trip_stops_ranked = @trip.stops.order("CREATED_AT ASC")
+
+      # add trip's stops onto a google map; only city has latitude/longitude data
+      @hash_big_map = Gmaps4rails.build_markers(@trip_stops_ranked) do |stop, marker|
+        marker.lat stop.city.latitude
+        marker.lng stop.city.longitude
+        marker.infowindow "<div style='width:200px;height:100%;'>#{stop.city.name}</div>"
+      end
   end
 
   def new

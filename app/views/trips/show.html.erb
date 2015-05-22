@@ -11,22 +11,24 @@
 
 <% else %>
 	<div class="row">	
-		<div class="col-md-7">
+		<div class="col-md-8">
 			<%= render "trip_info" %>
 		</div>
-		<div class="col-md-5">
+		<div class="col-md-4">
 		
 		</div>
 	</div>
 	
 	<div class="row">
-		<div class="col-md-7">
+		<div class="col-md-8">
 
 			<%#= render "search_for_stop" %>		
 
 			<% if can? :update, @trip %>
 				<div class="text-center">
-					<button id="add_stop" class="btn btn-primary btn-lg">Add A Stop</button>
+					<button id="add_stop" class="btn btn-primary">Add A Stop</button>
+					<%= link_to "View Big Map", big_map_trip_path(@trip), class: "btn btn-success" %>
+					<%= link_to 'Clone Trip', clone_trip_trip_path(@trip), method: :post, class: "btn btn-info" %>
 				</div>
 			<% end %>		
 			
@@ -39,7 +41,7 @@
 			<%= render "comments/form" %>
 		</div>
 
-		<div class="col-md-5">
+		<div class="col-md-4">
 			<h3 class="show_number_stops">Currently <%= pluralize(@trip.stops.size, 'stop') %> on this trip:</h3>
 			<!-- <table class="table table-stops"> -->
 			<ol class="all-trip-stops">

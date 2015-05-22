@@ -3,7 +3,6 @@
 	<% if can? :update, @trip %>
 		<%= link_to 'Edit Trip Info', edit_trip_path(@trip), class: "btn btn-warning btn-sm" %> 
 	<% end %>
-	<%= link_to 'Clone Trip', clone_trip_trip_path(@trip), method: :post, class: "btn btn-success btn-sm" %>
 </h1>
 
 <h4 class="inline-block">

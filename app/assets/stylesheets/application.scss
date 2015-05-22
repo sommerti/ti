@@ -114,7 +114,7 @@ body.modal-background{
 	}
 }
 .trip-library-search-box{
-	margin: 16px 0 0 0;
+	margin: 0 0 50px 0;
 }
 
 
@@ -127,7 +127,12 @@ body.modal-background{
 	border-radius: 5px;
 	width: 100%;
 	height: 350px;
-	margin: 20px 15px 50px 0;
+	margin: 20px 15px 0 0;
+}
+#map_big_map{
+	border-radius: 10px;
+	width: 100%;
+	height: 550px;
 }
 #map_city_results{
 	border-radius: 5px;
@@ -178,6 +183,18 @@ body.modal-background{
 	overflow-y: scroll;
 	height: 550px;
 }
+.back-to-trip-button-box{
+	text-align: center;
+	margin: 20px 0 0 0;
+	width: 100%;
+}
+// .view-on-big-map{
+// 	margin: 10px 0 40px 0;
+// 	a{
+// 		font-size: 1.2em;
+// 		font-weight: 700;
+// 	}
+// }
 
 
 

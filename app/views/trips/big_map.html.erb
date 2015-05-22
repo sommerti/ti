@@ -1,0 +1,46 @@
+<!-- google map -->
+<div id="map_big_map"></div>
+
+<div class="back-to-trip-button-box">
+	<%= link_to "Back To Trip", trip_path(@trip), class: "btn btn-primary btn-lg" %>
+</div>
+
+
+<!-- google map script -->
+<script>
+
+<% if !@trip.stops.blank? %>
+
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map_big_map'}}, function(){
+  markers = handler.addMarkers(<%= @hash_big_map.to_json.html_safe %>);
+
+	<% if @trip.stops.size == 1 %>
+		// to center on a marker
+		handler.map.centerOn(markers[0]); 
+		// to set the map zoom
+		handler.getMap().setZoom(4);
+	<% else %>
+		handler.bounds.extendWith(markers);
+		handler.fitMapToBounds();
+	<% end %> 
+
+  polylines = handler.addPolylines(
+    [
+		<%= @hash_big_map.to_json.html_safe %>    
+	],
+    { 
+		strokeColor: "#b94a48",
+		strokeOpacity: 0.5	,
+		strokeWeight: 5,
+    }
+  );
+
+  handler.bounds.extendWith(polylines);
+
+});
+
+<% end %>
+
+</script>
+

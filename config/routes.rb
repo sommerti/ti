@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   	member do
   		post "clone_trip", to: "trips#clone_trip"
+      get "big_map", to: "trips#big_map"
   	end
   	
   	resources :stops
