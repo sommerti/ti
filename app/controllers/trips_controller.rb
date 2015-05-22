@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!, except: [:trip_library, :show]
+  before_action :authenticate_user!, except: [:trip_library, :show, :big_map]
   before_action :set_trip, only: [:show, :big_map, :edit, :update, :destroy, :clone_trip]
   before_action :format_params, only: [:create, :update]
 

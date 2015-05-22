@@ -26,11 +26,13 @@
 
 			<%#= render "search_for_stop" %>		
 
-			<% if can? :update, @trip %>
-				<div class="text-center">
+			
+			<div class="text-center">
+				<% if can? :update, @trip %>
 					<button id="add_stop" class="btn btn-primary">Add A Stop</button>
-					<%= link_to "View Big Map", big_map_trip_path(@trip), class: "btn btn-success" %>
-					<%= link_to 'Clone Trip', clone_trip_trip_path(@trip), method: :post, class: "btn btn-info" %>
+				<% end %>	
+				<%= link_to "View Big Map", big_map_trip_path(@trip), class: "btn btn-success" %>
+				<%= link_to 'Clone Trip', clone_trip_trip_path(@trip), method: :post, class: "btn btn-info" %>
 				</div>
 			<% end %>		
 			
