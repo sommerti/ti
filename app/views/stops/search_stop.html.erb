@@ -9,7 +9,9 @@
 
 <% if params[:search].blank? %>
 <br>
-<h3 class="show_number_stops">Currently <%= pluralize(@trip.stops.size, 'stop') %> on this trip:</h3>
+<% if !@trip.stops.blank? %>
+	<h3 class="show_number_stops">Currently <%= pluralize(@trip.stops.size, 'stop') %> on this trip:</h3>
+<% end %>
 <!-- <table class="table table-stops"> -->
 <ol>
 	<%= render @trip.stops.order("CREATED_AT ASC") %>

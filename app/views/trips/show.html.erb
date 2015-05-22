@@ -1,13 +1,15 @@
 <% if @trip.stops.blank? %>
-	<div class="row">
-		<div class="col-md-12">
-			<%= render "trip_info" %>
+
+	<%= render "trip_info" %>
+
+	<h3 align="center">Currently no stop on this trip.</h3>
+
+
+	<% if can? :update, @trip %>
+		<div class="text-center">
+			<button id="add_stop" class="btn btn-primary">Add A Stop</button>
 		</div>
-		<div class="col-md-12">
-			<h3>Currently no stop on this trip.</h3>
-			<%= render "search_for_stop" %>
-		</div>
-	</div>
+	<% end %>	
 
 <% else %>
 	<div class="row">	

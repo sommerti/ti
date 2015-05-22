@@ -29,7 +29,7 @@ class TripsController < ApplicationController
 
 
       # rank trips according to creation date
-      @trip_stops_ranked = @trip.stops.order("CREATED_AT ASC")
+      @trip_stops_ranked = @trip.stops.order(begin_date: :asc, created_at: :asc)
 
 
       # add trip's stops onto a google map; only city has latitude/longitude data
@@ -43,7 +43,7 @@ class TripsController < ApplicationController
 
   def big_map
       # rank trips according to creation date
-      @trip_stops_ranked = @trip.stops.order("CREATED_AT ASC")
+      @trip_stops_ranked = @trip.stops.order(begin_date: :asc, created_at: :asc)
 
       # add trip's stops onto a google map; only city has latitude/longitude data
       @hash_big_map = Gmaps4rails.build_markers(@trip_stops_ranked) do |stop, marker|
