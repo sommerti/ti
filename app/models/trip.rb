@@ -17,6 +17,7 @@
 class Trip < ActiveRecord::Base
   	belongs_to :user
   	has_many :stops, dependent: :destroy
+  	has_many :locations, dependent: :destroy  	
   	has_many :comments, dependent: :destroy
 
   	validates :name, presence: true

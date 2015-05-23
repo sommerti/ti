@@ -13,6 +13,7 @@
 #  trip_id     :integer
 #  position    :integer
 #  description :text
+#  row_order   :integer
 #
 
 class Stop < ActiveRecord::Base

@@ -1,24 +1,22 @@
 # == Schema Information
 #
-# Table name: stops
+# Table name: locations
 #
 #  id          :integer          not null, primary key
-#  country_id  :integer
-#  region_id   :integer
-#  city_id     :integer
-#  begin_date  :date
-#  end_date    :date
+#  name        :string
+#  latitude    :float
+#  longitude   :float
+#  trip_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  trip_id     :integer
-#  position    :integer
+#  begin_date  :date
+#  end_date    :date
 #  description :text
-#  row_order   :integer
 #
 
 require 'test_helper'
 
-class StopTest < ActiveSupport::TestCase
+class LocationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -13,6 +13,7 @@
 #  trip_id     :integer
 #  position    :integer
 #  description :text
+#  row_order   :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

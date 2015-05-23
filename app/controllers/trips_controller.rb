@@ -9,23 +9,27 @@ class TripsController < ApplicationController
   end
 
   def show
-      # user searches for a destination, result could be country/region/city
-      if !params[:search].nil?
-        @destination = params[:search]
-        @country_results = Country.text_search(@destination) 
-        @region_results = Region.text_search(@destination) 
-        @city_results = City.text_search(@destination) 
-      end
+      
+      ###########################
+      # if using on-page search #
+      ###########################
+      # # user searches for a destination, result could be country/region/city
+      # if !params[:search].nil?
+      #   @destination = params[:search]
+      #   @country_results = Country.text_search(@destination) 
+      #   @region_results = Region.text_search(@destination) 
+      #   @city_results = City.text_search(@destination) 
+      # end
 
-      # add city results onto a google map; only city has latitude/longitude data
-      @hash_city_results = Gmaps4rails.build_markers(@city_results) do |city, marker|
-        marker.lat city.latitude
-        marker.lng city.longitude
-        marker.infowindow  "<div style='width:200px;height:100%;'>
-                              #{city.name}&nbsp;&nbsp;
-                              <a href='#{@trip.id}/stops/new?country_id=#{city.country.id}&region_id=#{city.region.id}&city_id=#{city.id}
-                              '><strong>Add To Trip</strong></a></div>"
-      end
+      # # add city results onto a google map; only city has latitude/longitude data
+      # @hash_city_results = Gmaps4rails.build_markers(@city_results) do |city, marker|
+      #   marker.lat city.latitude
+      #   marker.lng city.longitude
+      #   marker.infowindow  "<div style='width:200px;height:100%;'>
+      #                         #{city.name}&nbsp;&nbsp;
+      #                         <a href='#{@trip.id}/stops/new?country_id=#{city.country.id}&region_id=#{city.region.id}&city_id=#{city.id}
+      #                         '><strong>Add To Trip</strong></a></div>"
+      # end
 
 
       # rank trips according to creation date
@@ -102,7 +106,6 @@ class TripsController < ApplicationController
 
       redirect_to my_trips_path
   end
-
 
   def my_trips
     @trips = current_user.trips

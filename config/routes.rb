@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'locations/new'
+
+  get 'locations/create'
+
+  get 'locations/edit'
+
+  get 'locations/update'
+
+  get 'locations/destroy'
+
   root to: "trips#trip_library"
   
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}

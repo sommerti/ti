@@ -34,6 +34,7 @@ gem 'seed-fu', '~> 2.3.5'
 gem 'faker', '~> 1.4.3'
 gem 'deep_cloneable', '~> 2.1.1'
 gem 'cancancan', '~> 1.10.1'
+gem 'geocoder', '~> 1.2.8'
 
 group :development, :test do
   gem 'byebug'

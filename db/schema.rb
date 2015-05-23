@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522013532) do
+ActiveRecord::Schema.define(version: 20150523004657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,18 @@ ActiveRecord::Schema.define(version: 20150522013532) do
 
   add_index "countries", ["name"], name: "index_countries_on_name", using: :btree
 
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "trip_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.date     "begin_date"
+    t.date     "end_date"
+    t.text     "description"
+  end
+
   create_table "regions", force: :cascade do |t|
     t.integer "country_id",            null: false
     t.string  "name",       limit: 45, null: false
@@ -77,6 +89,7 @@ ActiveRecord::Schema.define(version: 20150522013532) do
     t.integer  "trip_id"
     t.integer  "position"
     t.text     "description"
+    t.integer  "row_order"
   end
 
   add_index "stops", ["city_id"], name: "index_stops_on_city_id", using: :btree

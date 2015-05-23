@@ -5,7 +5,6 @@ class StopsController < ApplicationController
   
   def new
     @stop = @trip.stops.new(stop_new_params)
-    @country
   end
 
   def create
@@ -76,11 +75,10 @@ class StopsController < ApplicationController
           
   end
 
-
   private
   
   def stop_new_params
-    params.permit(:city_id, :country_id, :region_id, :description)
+    params.permit(:city_id, :country_id, :region_id)
   end
 
   def stop_create_update_params
