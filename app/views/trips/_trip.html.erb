@@ -1,11 +1,14 @@
 <div class="container-trip">
 <h3><%= link_to trip.name, trip_path(trip) %></h3>
 
+<% if !(trip.begin_date.blank? and trip.end_date.blank?) %>
 <p>
 	<i class="fa fa-calendar"></i> <%= trip.begin_date.blank? ? "" : trip.begin_date  %>
 	~ 
 	<i class="fa fa-calendar"></i> <%= trip.end_date.blank? ? "" : trip.end_date  %>
 </p>
+<% end %>
+
 
 <% if trip.user != current_user %>
 	<p>Created by <%= trip.user.fullname %></p>

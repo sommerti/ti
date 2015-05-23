@@ -6,12 +6,14 @@
 </h1>
 
 <h4 class="inline-block">
-	<i class="fa fa-calendar"></i> <%= @trip.begin_date.blank? ? "" : @trip.begin_date %>
-	~ 
-	<i class="fa fa-calendar"></i> <%= @trip.end_date.blank? ? "" : @trip.end_date %>
-	
-	, created by <%= @trip.user == current_user ? "me" : @trip.user.fullname %>
-</h4>
 
+	<% if !(@trip.begin_date.blank? and @trip.end_date.blank?) %>
+		<i class="fa fa-calendar"></i> <%= @trip.begin_date.blank? ? "" : @trip.begin_date %>
+		~ 
+		<i class="fa fa-calendar"></i> <%= @trip.end_date.blank? ? "" : @trip.end_date %>.
+	<% end %>
+	
+	Created by <%= @trip.user == current_user ? "me" : @trip.user.fullname %>.
+</h4>
 
 <p><%= @trip.description %></p>

@@ -74,7 +74,7 @@ class LocationsController < ApplicationController
   end
 
   def location_create_update_params
-    params.require(:location).permit(:name :begin_date, :end_date, :description)
+    params.require(:location).permit(:name, :begin_date, :end_date, :description)
   end
   
   def set_trip    
