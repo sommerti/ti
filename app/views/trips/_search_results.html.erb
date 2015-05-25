@@ -1,27 +1,33 @@
-<% if @city_results.blank? %>
-	<h4>0 city</h4>
-<% else %>
+<% if !@city_results.blank? %>
 	<h4><%= pluralize(@city_results.size, 'city') %>: </h4>
 	<div id="map_city_results"></div>
 	<table class="table-city-results">
 		<%= render partial: 'trips/city_result', collection: @city_results, as: :city_result %>
 	</table>
-<% end %>
-
-<hr>
-
-<% if @region_results.blank? %>
-	<h4>0 region.</h4>
 <% else %>
-	<h4><%= pluralize(@region_results.size, 'region') %>: </h4>
-	<%= render partial: 'trips/region_result', collection: @region_results, as: :region_result %>
+
+	<h4>0 city</h4>
+	
+	<hr>
+
+	<% if @region_results.blank? %>
+		<h4>0 region.</h4>
+	<% else %>
+		<h4><%= pluralize(@region_results.size, 'region') %>: </h4>
+		<%= render partial: 'trips/region_result', collection: @region_results, as: :region_result %>
+	<% end %>
+	<p>(Only cities can be added to trip.)</p>
+
+	<hr>
+
+	<% if @country_results.blank? %>
+		<h4>0 country.</h4>
+	<% else %>
+		<h4><%= pluralize(@country_results.size, 'country') %>: </h4>
+		<%= render partial: 'trips/country_result', collection: @country_results, as: :country_result %>
+	<% end %>
+	<p>(Only cities can be added to trip.)</p>
+
 <% end %>
 
-<hr>
 
-<% if @country_results.blank? %>
-	<h4>0 country.</h4>
-<% else %>
-	<h4><%= pluralize(@country_results.size, 'country') %>: </h4>
-	<%= render partial: 'trips/country_result', collection: @country_results, as: :country_result %>
-<% end %>

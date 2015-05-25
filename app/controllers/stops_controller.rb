@@ -13,9 +13,9 @@ class StopsController < ApplicationController
     @stop = @trip.stops.new(stop_create_update_params)
 
     if @trip.user == current_user and @stop.save
-      flash[:notice] = "Stop added to trip."
+      flash[:notice] = "You've added a new stop to your trip."
     else
-      flash[:alert] = "Stop creation failed."
+      flash[:alert] = "The stop was not added to your trip."
     end
 
     # if using modal pop-up
@@ -36,7 +36,7 @@ class StopsController < ApplicationController
     authorize! :update, @stop
 
     if @stop.update(stop_create_update_params)
-      flash[:notice] = "Stop updated."
+      flash[:notice] = "The stop was updated."
     else
       render 'edit'
     end
@@ -49,7 +49,7 @@ class StopsController < ApplicationController
     authorize! :destroy, @stop
 
     @stop.destroy
-    flash[:notice] = "Stop deleted."
+    flash[:notice] = "The stop has been deleted."
     redirect_to @trip
   end
 

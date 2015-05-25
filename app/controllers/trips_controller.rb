@@ -4,8 +4,8 @@ class TripsController < ApplicationController
   before_action :format_params, only: [:create, :update]
 
   def index
-    @public_trips = Trip.is_public
-    @private_trips = Trip.is_private
+    @public_trips = Trip.is_public.order("CREATED_AT DESC")
+    @private_trips = Trip.is_private.order("CREATED_AT DESC")
   end
 
   def show
@@ -108,12 +108,12 @@ class TripsController < ApplicationController
   end
 
   def my_trips
-    @trips = current_user.trips
+    @trips = current_user.trips.order("CREATED_AT DESC")
 
   end
 
   def trip_library
-    @public_trips = Trip.is_public    
+    @public_trips = Trip.is_public.order("CREATED_AT DESC")    
 
     if !params[:search].nil?
       @trip_results = Trip.text_search(params[:search]) 

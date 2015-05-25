@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'locations/new'
-
-  get 'locations/create'
-
-  get 'locations/edit'
-
-  get 'locations/update'
-
-  get 'locations/destroy'
-
-  root to: "trips#trip_library"
-  
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  
+  authenticated :user do
+    root to: "trips#trip_library", as: :authenticated_root
+  end
+  root to: 'welcome#index'
+
+
   
   get "my_trips", to: "trips#my_trips"
   get "trip_library", to: "trips#trip_library"
@@ -28,6 +23,7 @@ Rails.application.routes.draw do
   	end
   	
   	resources :stops
+    resources :locations
     resources :comments
     
   end

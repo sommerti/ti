@@ -2,7 +2,7 @@
 
 	<%= render "trip_info" %>
 
-	<h3 align="center">Currently no stop on this trip.</h3>
+	<h3 align="center">There's no stop on this trip yet.</h3>
 
 
 	<% if can? :update, @trip %>
@@ -26,7 +26,6 @@
 
 			<%#= render "search_for_stop" %>		
 
-			
 			<div class="text-center">
 				<% if can? :update, @trip %>
 					<button id="add_stop" class="btn btn-primary">Add A Stop</button>
@@ -70,7 +69,7 @@
         </button><br>  	
       </div>
       <div class="modal-body">
-		<iframe src="" frameborder="0" width="865px;" height="550px;"></iframe>
+		<iframe src="" frameborder="0" class="trip-iframe"></iframe>
       </div>
       <div class="modal-footer"></div>
   </div>

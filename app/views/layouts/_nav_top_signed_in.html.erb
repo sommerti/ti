@@ -37,6 +37,16 @@
           <%= link_to 'My Trips', my_trips_path %>
         </li>
 
+        <li class=
+          <% if controller.class == TripsController && controller.action_name == 'new' %>
+            "active"
+          <% end %>
+        >
+          <%= link_to 'New Trip', new_trip_path %>
+        </li>
+  
+
+
       </ul>
 
 
