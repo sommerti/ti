@@ -4,7 +4,7 @@
 		<%= city_result.region.name %>, 
 		<%= city_result.country.name %> </td>
 	<td>		
-		<%= link_to 'Add To Trip', new_trip_stop_path(@trip, 
+		<%= link_to 'Add To Trip', trip_create_stop_path(@trip, 
 												country_id: city_result.country.id,
 												region_id: city_result.region.id,
 												city_id: city_result.id), class: "btn btn-primary btn-xs" %>

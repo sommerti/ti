@@ -1,6 +1,6 @@
 <h1>Are You Admin?</h1>
 
-<%= if current_user.role = "admin" %>
+<%= if current_user.role == "admin" %>
 	<!-- show all public trips -->
 	<h2>Public Trips:</h2>
 	<% if @public_trips.blank? %>

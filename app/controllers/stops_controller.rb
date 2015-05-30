@@ -82,7 +82,7 @@ class StopsController < ApplicationController
   end
 
   def stop_create_update_params
-    params.require(:stop).permit(:city_id, :country_id, :region_id, :begin_date, :end_date, :description)
+    params.permit(:city_id, :country_id, :region_id, :begin_date, :end_date, :description)
   end
   
   def set_trip    

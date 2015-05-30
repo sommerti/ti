@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   resources :trips do
   	get "search_stop", to: "stops#search_stop"
+    get "create_stop", to: "stops#create"
 
   	member do
   		post "clone_trip", to: "trips#clone_trip"
